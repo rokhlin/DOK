@@ -4,7 +4,7 @@ import com.selfapps.dok.LoadListContract;
 import com.selfapps.dok.view.MvpView;
 
 
-public class PlacesPresenter extends BasePresenter<LoadListContract.View> implements LoadListContract.Presenter {
+public class PlacesPresenter extends BasePresenter<MvpView> implements LoadListContract.Presenter {
 
     @Override
     public void onLoad() {
@@ -17,8 +17,8 @@ public class PlacesPresenter extends BasePresenter<LoadListContract.View> implem
     }
 
     @Override
-    public void attachView(MvpView view) {
-
+    public void attachView(MvpView mvpView) {
+        view = mvpView;
     }
 
     @Override

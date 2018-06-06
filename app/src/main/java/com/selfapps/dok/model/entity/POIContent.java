@@ -8,22 +8,22 @@ import java.util.List;
 public class POIContent {
     @SerializedName("name")
     @Expose
-    private Object name;
+    private String name;
     @SerializedName("content")
     @Expose
     private Object content;
     @SerializedName("address")
     @Expose
-    private Object address;
+    private String address;
     @SerializedName("mentionedByList")
     @Expose
     private List<Object> mentionedByList = null;
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -35,11 +35,11 @@ public class POIContent {
         this.content = content;
     }
 
-    public Object getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Object address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

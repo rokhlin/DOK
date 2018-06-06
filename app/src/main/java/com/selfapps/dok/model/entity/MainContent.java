@@ -8,7 +8,7 @@ import java.util.List;
 class MainContent {
     @SerializedName("name")
     @Expose
-    private Object name;
+    private String name;
     @SerializedName("content")
     @Expose
     private Object content;
@@ -17,11 +17,11 @@ class MainContent {
 
     private List<Object> mentionedByList = null;
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 

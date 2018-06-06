@@ -7,9 +7,6 @@ import com.selfapps.dok.view.MvpView;
 import java.util.List;
 
 public interface LoadListContract {
-    interface View extends MvpView {
-        void showList(List<Entity> entities);
-    }
 
     interface Presenter extends IPresenter<MvpView> {
         void onLoad();

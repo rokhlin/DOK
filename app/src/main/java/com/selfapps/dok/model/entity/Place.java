@@ -16,7 +16,7 @@ public class Place implements Entity {
 
     @SerializedName("article")
     @Expose
-    private Object article;
+    private String article;
 
     @SerializedName("location")
     @Expose
@@ -32,11 +32,11 @@ public class Place implements Entity {
 
     @SerializedName("created")
     @Expose
-    private Integer created;
+    private long created;
 
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private long updated;
 
     public String getId() {
         return id;
@@ -54,11 +54,11 @@ public class Place implements Entity {
         this.articleId = articleId;
     }
 
-    public Object getArticle() {
+    public String getArticle() {
         return article;
     }
 
-    public void setArticle(Object article) {
+    public void setArticle(String article) {
         this.article = article;
     }
 
@@ -86,19 +86,19 @@ public class Place implements Entity {
         this.imageList = imageList;
     }
 
-    public Integer getCreated() {
+    public long getCreated() {
         return created;
     }
 
-    public void setCreated(Integer created) {
+    public void setCreated(long created) {
         this.created = created;
     }
 
-    public Integer getUpdated() {
+    public long getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(long updated) {
         this.updated = updated;
     }
 
