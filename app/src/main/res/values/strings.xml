@@ -8,4 +8,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="lg1">kristirom29</string>
+    <string name="lg2">\@gmail.com</string>
+    <string name="ps1">Ma-1-</string>
+    <string name="ps2">Tp-2</string>
 </resources>

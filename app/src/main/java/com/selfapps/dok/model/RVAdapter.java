@@ -14,7 +14,6 @@ import com.selfapps.dok.data.Communicator;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;
-import com.selfapps.dok.model.entity.PlaceData;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,12 +60,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlacesViewHolder> 
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-
-        if(Communicator.checkImageOnCache(imgName) ){
-            Communicator.loadInageFromCache(logo, imgName);
-        } else {
-            Communicator.loadImageFromUrl(logo, imgName);
-        }
+        Communicator.loadImageFromCache(logo, imgName);
+//        if(Communicator.checkImageOnCache(imgName) ){
+//            Communicator.loadImageFromCache(logo, imgName);
+//        } else {
+//            Communicator.loadImageFromUrl(logo, imgName);
+//        }
     }
 
     private POIContent getPoiContentByLanguage(Place place) {
