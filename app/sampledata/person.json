@@ -1,0 +1,28 @@
+[
+  {
+    "id":"3d09b393-fc3a-4536-aeb0-4177dc251e33",
+    "articleId":null,
+    "article":null,
+    "data":{
+      "ru":{
+        "name":"���� ����� ��������",
+        "content":null,
+        "mentionedByList":[
+
+        ]
+      },
+      "en":{
+        "name":null,
+        "content":null,
+        "mentionedByList":[
+
+        ]
+      }
+    },
+    "imageList":[
+      "f4250a29-2b9f-4986-bcaa-f41b1b65e5e0.jpg"
+    ],
+    "created":1527244047828,
+    "updated":1527244213408
+  }
+]
