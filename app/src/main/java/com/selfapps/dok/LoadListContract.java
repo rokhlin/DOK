@@ -12,4 +12,6 @@ public interface LoadListContract {
         void onLoad();
         void onUpdate();
     }
+
+
 }

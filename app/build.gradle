@@ -19,6 +19,7 @@ android {
 }
 ext {
     androidLibrary = '27.1.1'
+    dagger = '2.16'
 }
 
 dependencies {
@@ -34,6 +35,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation  'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+
+    implementation  "com.google.dagger:dagger:$dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
 
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
     implementation 'com.google.code.gson:gson:2.8.4'
