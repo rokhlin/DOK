@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.selfapps.dok.R;
-import com.selfapps.dok.data.Communicator;
+import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;

@@ -1,32 +1,27 @@
 package com.selfapps.dok.view.activity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.selfapps.dok.R;
-import com.selfapps.dok.data.Communicator;
+import com.selfapps.dok.model.entity.Entity;
+import com.selfapps.dok.presenter.SplashPresenter;
+import com.selfapps.dok.view.SplashView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Authenticator;
-import java.net.HttpURLConnection;
-import java.net.PasswordAuthentication;
-import java.net.URL;
+import java.util.List;
 
-import static com.selfapps.dok.data.NetworkConstants.POI_URL;
+public class SplashActivity extends AppCompatActivity implements SplashView {
+    private Button clear, update;
+    private TextView container;
+    private ImageView imageView;
 
-public class SplashActivity extends AppCompatActivity {
-    Button clear, update;
-    TextView container;
-    ImageView imageView;
+    SplashPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +30,16 @@ public class SplashActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        presenter = new SplashPresenter();
+        presenter.attachView(this);
+
         container = (TextView) findViewById(R.id.tv_text);
         imageView = (ImageView) findViewById(R.id.img_test);
         update = (Button) findViewById(R.id.btn_update);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doLoad();
+                presenter.viewIsReady();
             }
         });
         clear = (Button) findViewById(R.id.btn_clear);
@@ -52,60 +50,40 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-
+        presenter.viewIsReady();
     }
 
-    private void doLoad() {
-
-        MyAcyncTAsk tAsk = new MyAcyncTAsk();
-        tAsk.execute();
-
-        Communicator.loadImageFromCache(imageView,"f4250a29-2b9f-4986-bcaa-f41b1b65e5e0.jpg");
-
-    }
-
-    class MyAcyncTAsk extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            String res = "";
-            String url = POI_URL;
-            final String user = "kristirom29@gmail.com";
-            final String password = "Ma-1-Tp-2";
-            String userPass = user+":"+password;
-            try {
-                Authenticator.setDefault(new Authenticator(){
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(user,password.toCharArray());
-                    }});
-                HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
-                c.setUseCaches(false);
-                c.setRequestProperty("Authorization", "basic " +
-                        Base64.encode(userPass.getBytes(), Base64.NO_WRAP));
-                c.connect();
-                String line;
-                StringBuffer stringBuffer = new StringBuffer();
-                BufferedReader in = new BufferedReader(new InputStreamReader(c.getInputStream()));
-                while ((line = in.readLine()) != null) {
-                    stringBuffer.append(line).append('\n');
-                }
-                res = stringBuffer.toString();
 
 
-                in.close();
-                c.disconnect();
-            } catch (IOException e) {
-                e.printStackTrace();
-                res = e.getMessage();
-            }
-            return res;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            container.setText(s);
-
+    @Override
+    public void updateProgress(boolean isActive) {
+        if(isActive){
+            container.setText("loading...");
+        }else {
+            container.setText("Loading Finished");
         }
     }
 
+    @Override
+    public void postProgress(int progress) {
+        int step = 100/3;
+        container.setText(container.getText()+"\n"+"finished: "+step*progress +"%");
+    }
+
+    @Override
+    public void setText(String text) {
+        container.setText(container.getText()
+                +"\n"
+                +text);
+    }
+
+    @Override
+    public void startMainActivity() {
+
+    }
+
+    @Override
+    public void showList(List<Entity> entities) {
+
+    }
 }

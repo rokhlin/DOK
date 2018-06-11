@@ -20,21 +20,28 @@ import okhttp3.Route;
 
 
 public class App extends Application {
+    private static Context context;
 
-        @Override
-        public void onCreate() {
-            super.onCreate();
 
-            OkHttpClient okHttpClient = getOkHttpClient();
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = getApplicationContext();
+        OkHttpClient okHttpClient = getOkHttpClient();
 
-            Picasso.Builder builder = new Picasso.Builder(this);
-            builder.downloader(new OkHttp3Downloader(okHttpClient));
-            Picasso built = builder.build();
-            built.setIndicatorsEnabled(true); //TODO remove before release Indicator change to false
-            built.setLoggingEnabled(true); //TODO remove before release change to false
-            Picasso.setSingletonInstance(built);
+        Picasso.Builder builder = new Picasso.Builder(this);
+        builder.downloader(new OkHttp3Downloader(okHttpClient));
+        Picasso built = builder.build();
+        built.setIndicatorsEnabled(true); //TODO remove before release Indicator change to false
+        built.setLoggingEnabled(true); //TODO remove before release change to false
+        Picasso.setSingletonInstance(built);
 
-        }
+    }
+
+
+    public static Context getContext() {
+        return context;
+    }
 
     private OkHttpClient getOkHttpClient() {
         OkHttpClient.Builder clientBuilder   = new OkHttpClient.Builder()

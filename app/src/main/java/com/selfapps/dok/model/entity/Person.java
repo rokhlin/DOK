@@ -12,11 +12,11 @@ public class Person implements Entity {
     private String id;
     @SerializedName("articleId")
     @Expose
-    private Object articleId;
-    @SerializedName("article")
-    @Expose
-    private Object article;
-    @SerializedName("personData")
+    private String articleId;
+//    @SerializedName("article")
+//    @Expose
+//    private Object article;
+    @SerializedName("data")
     @Expose
     private PersonData personData;
     @SerializedName("imageList")
@@ -24,10 +24,10 @@ public class Person implements Entity {
     private List<String> imageList = null;
     @SerializedName("created")
     @Expose
-    private Integer created;
+    private long created;
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private long updated;
 
     public String getId() {
         return id;
@@ -37,21 +37,21 @@ public class Person implements Entity {
         this.id = id;
     }
 
-    public Object getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Object articleId) {
+    public void setArticleId(String articleId) {
         this.articleId = articleId;
     }
 
-    public Object getArticle() {
-        return article;
-    }
-
-    public void setArticle(Object article) {
-        this.article = article;
-    }
+//    public Object getArticle() {
+//        return article;
+//    }
+//
+//    public void setArticle(Object article) {
+//        this.article = article;
+//    }
 
     public PersonData getPersonData() {
         return personData;
@@ -69,20 +69,32 @@ public class Person implements Entity {
         this.imageList = imageList;
     }
 
-    public Integer getCreated() {
+    public long getCreated() {
         return created;
     }
 
-    public void setCreated(Integer created) {
+    public void setCreated(long created) {
         this.created = created;
     }
 
-    public Integer getUpdated() {
+    public long getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(long updated) {
         this.updated = updated;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", articleId=" + articleId +
+               // ", article=" + article +
+                ", personData=" + personData +
+                ", imageList=" + imageList +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
 }
