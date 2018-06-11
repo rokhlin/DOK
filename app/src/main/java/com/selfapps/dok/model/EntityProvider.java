@@ -10,6 +10,8 @@ import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.network.Communicator;
+import com.selfapps.dok.utils.Constants;
+import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
 
 import java.lang.reflect.Type;
@@ -21,11 +23,13 @@ import retrofit2.Response;
 
 public class EntityProvider<T> {
     private DataType type;
+    private String TAG;
     private ResultListener<ArrayList<T>> listener;
     private Gson gson;
 
     public EntityProvider(DataType type, ResultListener<ArrayList<T>> listener) {
         this.type = type;
+        TAG = "Provider "+type;
         this.listener = listener;
         GsonBuilder builder = new GsonBuilder();
         gson = builder.create();
@@ -36,21 +40,23 @@ public class EntityProvider<T> {
     }
 
     public void requestFromLocalStorage() {
+        Log.d(TAG,"request Data From Local Storage.");
         try {
             String data = PreferencesUtil.getData(type);
-            listener.onSuccess(getObjectFromString(data));
+            listener.onSuccess((ArrayList<T>) Converter.getEntityFromString(type,data));
         } catch (UnsupportedOperationException e) {
             listener.onError(e);
         }
     }
 
-    public ArrayList<T> getObjectFromString(String data) throws UnsupportedOperationException {
-        Type collectionType = new TypeToken<ArrayList<T>>(){}.getType();
-        return gson.fromJson(data, collectionType);
-
-    }
+//    public ArrayList<T> getObjectFromString(String data) throws UnsupportedOperationException {
+//        Type collectionType = new TypeToken<ArrayList<T>>(){}.getType();
+//        return gson.fromJson(data, collectionType);
+//
+//    }
 
     public void requestFromNetwork() {
+        Log.d(TAG,"request Data From Network.");
         try {
             switch (type){
                 case PERSON:
@@ -98,7 +104,8 @@ public class EntityProvider<T> {
                         }
                     });
             }
-
+            //Set last updated time
+            PreferencesUtil.setLong(Constants.PREF_LAST_UPDATE,System.currentTimeMillis());
         } catch (Exception e) {
             e.printStackTrace();
         }

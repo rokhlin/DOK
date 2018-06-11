@@ -1,22 +1,14 @@
 package com.selfapps.dok.model;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
-import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.utils.Constants;
-import com.selfapps.dok.utils.PreferencesUtil;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import static com.selfapps.dok.utils.PreferencesUtil.getData;
+import static com.selfapps.dok.utils.PreferencesUtil.getLong;
+import static com.selfapps.dok.utils.PreferencesUtil.setLong;
 
 public class SplashModel implements ISplashModel {
 
@@ -26,7 +18,8 @@ public class SplashModel implements ISplashModel {
 
     @Override
     public boolean isDataValid(DataType type) {
-        return !PreferencesUtil.getData(type).isEmpty() && PreferencesUtil.getLong(Constants.PREF_LAST_UPDATE,0) > getExpiredTime();
+        return getData(type).length() > 4
+                & getLong(Constants.PREF_LAST_UPDATE,0) > getExpiredTime();
     }
 
     private long getExpiredTime() {
@@ -34,7 +27,7 @@ public class SplashModel implements ISplashModel {
     }
 
     private void setDataUpdatedTime() {
-        PreferencesUtil.setLong(Constants.PREF_LAST_UPDATE,System.currentTimeMillis());
+        setLong(Constants.PREF_LAST_UPDATE,System.currentTimeMillis());
     }
 
     @Override

@@ -7,6 +7,8 @@ import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
+import com.selfapps.dok.utils.Converter;
+import com.selfapps.dok.utils.PreferencesUtil;
 import com.selfapps.dok.view.SplashView;
 
 import java.util.ArrayList;
@@ -45,33 +47,40 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
     public void viewIsReady() {
         finalFlag = 0;
         view.updateProgress(true);
-
+        view.setText( PreferencesUtil.getData(DataType.PERSON));
         model.requestPersons(new EntityProvider<Person>(DataType.PERSON, new ResultListener<ArrayList<Person>>() {
             @Override
             protected void onSuccess(ArrayList<Person> entity) {
-                //view.postProgress( ++finalFlag);
                 view.setText("Person update");
-                view.setText(entity.toString());
+                //view.setText(entity.toString());
+                PreferencesUtil.saveData(DataType.PERSON, Converter.entityToString(entity));
+                view.setText("_____________________________");
+                view.setText( PreferencesUtil.getData(DataType.PERSON));
             }
         }));
 
         model.requestPlaces(new EntityProvider<Place>(DataType.POI, new ResultListener<ArrayList<Place>>() {
             @Override
             protected void onSuccess(ArrayList<Place> entity) {
-               // view.postProgress( ++finalFlag);
                 view.setText("Place update");
-                view.setText(entity.toString());
+                //view.setText(entity.toString());
+                PreferencesUtil.saveData(DataType.POI, Converter.entityToString(entity));
+                view.setText("_____________________________");
+                view.setText( PreferencesUtil.getData(DataType.POI));
             }
         }));
 
         model.requestRoutes(new EntityProvider<Route>(DataType.ROUTE, new ResultListener<ArrayList<Route>>() {
             @Override
             protected void onSuccess(ArrayList<Route> entity) {
-                //view.postProgress( ++finalFlag);
                 view.setText("Route update");
                 view.setText(entity.toString());
+                PreferencesUtil.saveData(DataType.ROUTE, Converter.entityToString(entity));
+                view.setText("_____________________________");
+                view.setText( PreferencesUtil.getData(DataType.ROUTE));
             }
         }));
+
 
         onLoadingFinished();
 
