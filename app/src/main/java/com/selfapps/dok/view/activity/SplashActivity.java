@@ -1,5 +1,6 @@
 package com.selfapps.dok.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -57,21 +58,24 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void updateProgress(boolean isActive) {
+        //TODO replace test behavior with real progress
         if(isActive){
             container.setText("loading...");
         }else {
-            container.setText("Loading Finished");
+            setText("Loading Finished");
         }
     }
 
     @Override
     public void postProgress(int progress) {
+        //TODO replace test behavior with real progress
         int step = 100/3;
         container.setText(container.getText()+"\n"+"finished: "+step*progress +"%");
     }
 
     @Override
     public void setText(String text) {
+        //TODO check necessity
         container.setText(container.getText()
                 +"\n"
                 +text);
@@ -79,6 +83,8 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void startMainActivity() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
 
     }
 

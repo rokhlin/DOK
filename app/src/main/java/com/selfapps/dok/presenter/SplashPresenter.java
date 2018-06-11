@@ -1,5 +1,8 @@
 package com.selfapps.dok.presenter;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.selfapps.dok.model.EntityProvider;
 import com.selfapps.dok.model.ResultListener;
 import com.selfapps.dok.model.SplashModel;
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 public class SplashPresenter implements ISplashPresenter<SplashView> {
     private SplashView view;
     private SplashModel model;
-    private int finalFlag;
+    private volatile int finalFlag;
 
     public SplashPresenter() {
         this.model = new SplashModel();
@@ -54,8 +57,7 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Person update");
                 //view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.PERSON, Converter.entityToString(entity));
-                view.setText("_____________________________");
-                view.setText( PreferencesUtil.getData(DataType.PERSON));
+                view.postProgress(++finalFlag);
             }
         }));
 
@@ -65,8 +67,7 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Place update");
                 //view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.POI, Converter.entityToString(entity));
-                view.setText("_____________________________");
-                view.setText( PreferencesUtil.getData(DataType.POI));
+                view.postProgress(++finalFlag);
             }
         }));
 
@@ -76,21 +77,40 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Route update");
                 view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.ROUTE, Converter.entityToString(entity));
-                view.setText("_____________________________");
-                view.setText( PreferencesUtil.getData(DataType.ROUTE));
+                view.postProgress(++finalFlag);
             }
         }));
 
 
         onLoadingFinished();
 
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){ //start loop
+                    if (!(finalFlag < 3)) break;
+                }
+
+                //onFinish
+                onLoadingFinished();
+            }
+        });
+
     }
 
 
     private void onLoadingFinished() {
-        //TODO Create behavior on load end
-        //view.updateProgress(false);
-        view.startMainActivity();
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                //TODO Create behavior on load end
+                view.updateProgress(false);
+                view.startMainActivity();
+            }
+        };
+        mainHandler.post(myRunnable);
+
     }
 
 
