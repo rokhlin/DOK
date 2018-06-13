@@ -4,7 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-  /**
+import com.selfapps.dok.view.fragment.PlacesFragment;
+
+/**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
@@ -16,9 +18,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return null;
+        switch (position){
+            case 0:
+                return new PlacesFragment();
+            case 1:
+                return new PlacesFragment();
+            case 2:
+                return new PlacesFragment();
+            default:
+                return null;
+        }
     }
 
     @Override

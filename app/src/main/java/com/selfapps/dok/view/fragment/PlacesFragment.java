@@ -11,7 +11,11 @@ import android.view.ViewGroup;
 
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.RVAdapter;
+import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Place;
+import com.selfapps.dok.presenter.PlacesPresenter;
+import com.selfapps.dok.utils.Converter;
+import com.selfapps.dok.utils.PreferencesUtil;
 
 import java.util.ArrayList;
 
@@ -21,7 +25,7 @@ import java.util.ArrayList;
  */
 public class PlacesFragment extends Fragment {
     ArrayList<Place> places;
-
+    PlacesPresenter presenter;
     public PlacesFragment() {
         // Required empty public constructor
     }
@@ -31,16 +35,20 @@ public class PlacesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_places, container, false);
-        RecyclerView rv = new RecyclerView(getContext());
+
+        presenter = new PlacesPresenter();
+
+        RecyclerView rv = rootView.findViewById(R.id.recycler_view);
+
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new RVAdapter(getPlaces()));
+        rv.hasFixedSize();
+
         return rootView;
     }
 
     private ArrayList<Place> getPlaces() {
-        ArrayList<Place> places = new ArrayList<>();
-        //TODO replace with request from repository
-        return places;
+        return Converter.getPlacesFromString(PreferencesUtil.getData(DataType.POI));
     }
 
 }

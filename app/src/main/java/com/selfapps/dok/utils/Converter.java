@@ -8,6 +8,7 @@ import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Converter {
@@ -45,20 +46,22 @@ public class Converter {
         return gson.toJson(entity);
     }
 
-//    public static ArrayList<Person> getPersonsFromString(String data) throws UnsupportedOperationException {
-//        Type collectionType = new TypeToken<ArrayList<Person>>(){}.getType();
-//        return gson.fromJson(data, collectionType);
-//    }
-//
-//    public static ArrayList<Place> getPlacesFromString(String data) throws UnsupportedOperationException {
-//        Type collectionType = new TypeToken<ArrayList<Place>>(){}.getType();
-//        return gson.fromJson(data, collectionType);
-//    }
-//
-//    public static ArrayList<Route> getRoutesFromString(String data) throws UnsupportedOperationException {
-//        Type collectionType = new TypeToken<ArrayList<Route>>(){}.getType();
-//        return gson.fromJson(data, collectionType);
-//    }
+
+
+    public static ArrayList<Person> getPersonsFromString(String data) throws UnsupportedOperationException {
+        Type collectionType = new TypeToken<ArrayList<Person>>(){}.getType();
+        return gson.fromJson(data, collectionType);
+    }
+
+    public static ArrayList<Place> getPlacesFromString(String data) throws UnsupportedOperationException {
+        Type collectionType = new TypeToken<ArrayList<Place>>(){}.getType();
+        return gson.fromJson(data, collectionType);
+    }
+
+    public static ArrayList<Route> getRoutesFromString(String data) throws UnsupportedOperationException {
+        Type collectionType = new TypeToken<ArrayList<Route>>(){}.getType();
+        return gson.fromJson(data, collectionType);
+    }
 
 
 }

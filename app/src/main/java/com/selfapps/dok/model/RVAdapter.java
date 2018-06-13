@@ -45,9 +45,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlacesViewHolder> 
         imgName = places.get(position).getImageList().get(0);
 
         loadImage(holder.logo, imgName);
-        Picasso.get()
-                .load( "http://i.imgur.com/DvpvklR.png")
-                .into(holder.logo); //ссылка на ImageView
+//        Picasso.get()
+//                .load( "http://i.imgur.com/DvpvklR.png")
+//                .into(holder.logo); //ссылка на ImageView
 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,6 +6,7 @@ import com.selfapps.dok.view.MvpView;
 
 public class PlacesPresenter extends BasePresenter<MvpView> implements LoadListContract.Presenter {
 
+
     @Override
     public void onLoad() {
 
