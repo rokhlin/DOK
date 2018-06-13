@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.selfapps.dok.view.SplashView;
 import java.util.List;
 
 public class SplashActivity extends AppCompatActivity implements SplashView {
+    private static final String TAG = SplashActivity.class.getSimpleName();
     private Button clear, update;
     private TextView container;
     private ImageView imageView;
@@ -83,13 +85,21 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void startMainActivity() {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
     }
+
+
 
     @Override
     public void showList(List<Entity> entities) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.destroy();
     }
 }

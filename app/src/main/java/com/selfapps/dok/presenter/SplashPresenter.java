@@ -1,7 +1,9 @@
 package com.selfapps.dok.presenter;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 
 import com.selfapps.dok.model.EntityProvider;
 import com.selfapps.dok.model.ResultListener;
@@ -19,10 +21,22 @@ import java.util.ArrayList;
 public class SplashPresenter implements ISplashPresenter<SplashView> {
     private SplashView view;
     private SplashModel model;
-    private volatile int finalFlag;
+    private int finalFlag;
+    private Handler handler;
 
+    @SuppressLint("HandlerLeak")
     public SplashPresenter() {
         this.model = new SplashModel();
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                if (finalFlag >= 2)
+                    onLoadingFinished();
+                else
+                    finalFlag ++;
+            }
+        };
     }
 
     @Override
@@ -44,6 +58,7 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
     @Override
     public void destroy() {
         detachView();
+        handler = null;
     }
 
     @Override
@@ -57,7 +72,8 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Person update");
                 //view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.PERSON, Converter.entityToString(entity));
-                view.postProgress(++finalFlag);
+                view.postProgress(finalFlag);
+                handler.sendEmptyMessage(1);
             }
         }));
 
@@ -67,7 +83,8 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Place update");
                 //view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.POI, Converter.entityToString(entity));
-                view.postProgress(++finalFlag);
+                view.postProgress(finalFlag);
+                handler.sendEmptyMessage(1);
             }
         }));
 
@@ -77,40 +94,47 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 view.setText("Route update");
                 view.setText(entity.toString());
                 PreferencesUtil.saveData(DataType.ROUTE, Converter.entityToString(entity));
-                view.postProgress(++finalFlag);
+                view.postProgress(finalFlag);
+                handler.sendEmptyMessage(1);
             }
         }));
 
 
-        onLoadingFinished();
+      //  onLoadingFinished();
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true){ //start loop
-                    if (!(finalFlag < 3)) break;
-                }
-
-                //onFinish
-                onLoadingFinished();
-            }
-        });
-
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while (true){ //start loop
+//                    if (!(finalFlag < 3)) break;
+//                }
+//
+//                //onFinish
+//                Looper.prepare();
+//                onLoadingFinished();
+//                Looper.loop();
+//            }
+//        });
+//        thread.start();
     }
 
 
     private void onLoadingFinished() {
-        Handler mainHandler = new Handler(Looper.getMainLooper());
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                //TODO Create behavior on load end
-                view.updateProgress(false);
-                view.startMainActivity();
-            }
-        };
-        mainHandler.post(myRunnable);
-
+        view.updateProgress(false);
+        view.startMainActivity();
+//        Handler mainHandler = new Handler(Looper.getMainLooper());
+//        Runnable myRunnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                //TODO Create behavior on load end
+//
+//                view.updateProgress(false);
+//                view.startMainActivity();
+//
+//            }
+//        };
+//
+//        mainHandler.post(myRunnable);
     }
 
 
