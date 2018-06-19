@@ -2,8 +2,8 @@ package com.selfapps.dok.presenter;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import com.selfapps.dok.model.EntityProvider;
 import com.selfapps.dok.model.ResultListener;
@@ -19,6 +19,7 @@ import com.selfapps.dok.view.SplashView;
 import java.util.ArrayList;
 
 public class SplashPresenter implements ISplashPresenter<SplashView> {
+    private static final String TAG = SplashPresenter.class.getSimpleName();
     private SplashView view;
     private SplashModel model;
     private int finalFlag;
@@ -31,9 +32,10 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (finalFlag >= 2)
+                if (finalFlag >= 2){
+                    Log.d(TAG, "Loading is finished finalFlag= " + finalFlag);
                     onLoadingFinished();
-                else
+                } else
                     finalFlag ++;
             }
         };
@@ -122,19 +124,6 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
     private void onLoadingFinished() {
         view.updateProgress(false);
         view.startMainActivity();
-//        Handler mainHandler = new Handler(Looper.getMainLooper());
-//        Runnable myRunnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                //TODO Create behavior on load end
-//
-//                view.updateProgress(false);
-//                view.startMainActivity();
-//
-//            }
-//        };
-//
-//        mainHandler.post(myRunnable);
     }
 
 

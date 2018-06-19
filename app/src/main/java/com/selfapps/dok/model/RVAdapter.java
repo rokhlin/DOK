@@ -14,7 +14,7 @@ import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -45,9 +45,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlacesViewHolder> 
         imgName = places.get(position).getImageList().get(0);
 
         loadImage(holder.logo, imgName);
-//        Picasso.get()
-//                .load( "http://i.imgur.com/DvpvklR.png")
-//                .into(holder.logo); //ссылка на ImageView
 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,12 +57,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlacesViewHolder> 
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-        Communicator.loadImageFromCache(logo, imgName);
-//        if(Communicator.checkImageOnCache(imgName) ){
-//            Communicator.loadImageFromCache(logo, imgName);
-//        } else {
-//            Communicator.loadImageFromUrl(logo, imgName);
-//        }
+        Communicator.loadUsingGlide(logo,imgName);
+       // Communicator.loadImageFromCache(logo, imgName);
     }
 
     private POIContent getPoiContentByLanguage(Place place) {

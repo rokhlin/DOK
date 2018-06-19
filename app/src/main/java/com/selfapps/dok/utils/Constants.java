@@ -9,4 +9,5 @@ public class Constants {
     public static final String PREF_INIT_KEY = "com.selfapps.dok.app.sharedpreferences";
     public static final String PREF_LAST_UPDATE = "last_data_update";
     public static final long UPDATE_PERIOD_MILLS = TimeUnit.DAYS.toMillis(3);//Update each 3 days
+    public static final int PICASSO_CACHE_AGE_IN_HOURS = 7 * 24 ;
 }
