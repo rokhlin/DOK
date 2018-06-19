@@ -23,10 +23,10 @@ public class Route implements Entity {
     private List<Place> poiList = null;
     @SerializedName("created")
     @Expose
-    private Integer created;
+    private long created;
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private long updated;
 
     public String getId() {
         return id;
@@ -68,7 +68,7 @@ public class Route implements Entity {
         this.poiList = poiList;
     }
 
-    public Integer getCreated() {
+    public long getCreated() {
         return created;
     }
 
@@ -76,11 +76,11 @@ public class Route implements Entity {
         this.created = created;
     }
 
-    public Integer getUpdated() {
+    public long getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(long updated) {
         this.updated = updated;
     }
 
