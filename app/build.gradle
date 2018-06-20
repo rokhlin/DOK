@@ -35,7 +35,7 @@ dependencies {
     implementation "com.android.support:support-v4:$androidLibrary"
     implementation "com.android.support:recyclerview-v7:$androidLibrary"
     implementation "com.android.support:cardview-v7:$androidLibrary"
-
+    implementation "net.opacapp:multiline-collapsingtoolbar:27.1.1"
     // implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     // implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
