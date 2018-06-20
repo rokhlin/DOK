@@ -15,6 +15,7 @@ import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.model.entity.RouteContent;
 import com.selfapps.dok.network.Communicator;
+import com.selfapps.dok.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -35,19 +36,30 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
 
     @Override
     public void onBindViewHolder(@NonNull RVRoutesAdapter.RoutesViewHolder holder, int position) {
-        RouteContent content = getContentByLanguage(routes.get(position));
-        holder.name.setText(content.getName());
-        holder.placesCount.setText(getPlacesCount(routes.get(position)));
+        Route route = null;
+        try {
+            route = routes.get(position);
+            RouteContent content = getContentByLanguage(route);
+            holder.name.setText(content.getName());
+            holder.placesCount.setText(getPlacesCount(route));
+
+        } catch (NullPointerException e) {
+            Log.e(TAG,"RouteContent is empty. Skipping this Item... \nRouteContent error "+e.getMessage());
+            return;
+        }
+
+
+
 
         String imgName = null;
         try {
-            if (routes.get(position).getImageList()!= null ||
-                    routes.get(position).getImageList().size()!=0 )
-                imgName = routes.get(position).getImageList().get(0);
+            if (route.getImageList()!= null ||
+                    route.getImageList().size()!=0 )
+                imgName = route.getImageList().get(0);
 
             loadImage(holder.logo, imgName);
         } catch (IndexOutOfBoundsException e) {
-            Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
+            Log.e(TAG,"Logo is empty. Image loading error "+e.getMessage());
         }
 
         holder.details.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +73,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
 
     private String getPlacesCount(Route route) {
         int count = route.getPoiIdList().size();
-        switch (getCurrentLanguage()){
+        switch (Utils.getCurrentLanguage()){
             case En:
                 return getEngString(count);
             case Ru:
@@ -90,21 +102,18 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
         // Communicator.loadImageFromCache(logo, imgName);
     }
 
-    private RouteContent getContentByLanguage(Route route) {
-        switch (getCurrentLanguage()){
-            case En:
-                return route.getData().getEn();
-            case Ru:
-                return route.getData().getRu();
-            default:
-                return null;
-        }
+    private RouteContent getContentByLanguage(@NonNull Route route) throws NullPointerException {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return route.getData().getEn();
+                case Ru:
+                    return route.getData().getRu();
+                default:
+                    return null;
+            }
     }
 
-    private Language getCurrentLanguage() {
-        //TODO Create language change method
-        return Language.Ru;
-    }
+
 
     @Override
     public int getItemCount() {

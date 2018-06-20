@@ -15,6 +15,7 @@ import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;
+import com.selfapps.dok.utils.Utils;
 
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
     }
 
     private POIContent getPoiContentByLanguage(Place place) {
-        switch (getCurrentLanguage()){
+        switch (Utils.getCurrentLanguage()){
             case En:
                 return place.getPlaceData().getEn();
             case Ru:
@@ -74,11 +75,6 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
             default:
                 return null;
         }
-    }
-
-    private Language getCurrentLanguage() {
-        //TODO Create language change method
-        return Language.Ru;
     }
 
     @Override

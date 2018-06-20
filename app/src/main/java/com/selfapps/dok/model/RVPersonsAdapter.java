@@ -17,6 +17,7 @@ import com.selfapps.dok.model.entity.PersonContent;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.utils.Constants;
+import com.selfapps.dok.utils.Utils;
 import com.selfapps.dok.view.activity.PersonDetailActivity;
 
 import java.util.ArrayList;
@@ -38,25 +39,32 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
 
 
     public void onBindViewHolder(@NonNull RVPersonsAdapter.PersonsViewHolder holder, int position) {
-        PersonContent content = getContentByLanguage(persons.get(position));
-
-        //Name set up
-        holder.name.setText(content.getName());
+        String id = "";
+        Person person = null;
+        try {
+            person = persons.get(position);
+            PersonContent content = getContentByLanguage(person);
+            id =person.getId();
+            //Name set up
+            holder.name.setText(content.getName());
+        } catch (NullPointerException e) {
+            Log.e(TAG,"Person is empty. Content error "+e.getMessage());
+        }
 
         //Logo set up
         try{
             String imgName = null;
-            if (persons.get(position).getImageList()!=null ||
-                    persons.get(position).getImageList().size()!=0 )
-                imgName = persons.get(position).getImageList().get(0);
+            if (person.getImageList()!=null ||
+                    person.getImageList().size()!=0 )
+                imgName = person.getImageList().get(0);
 
             loadImage(holder.logo, imgName);
         } catch (IndexOutOfBoundsException e) {
-            Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
+            Log.e(TAG,"Logo is empty. Image loading error "+e.getMessage());
         }
 
         //Button set up
-        holder.details.setTag(persons.get(position).getId());
+        holder.details.setTag(id);
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +82,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
     }
 
     private PersonContent getContentByLanguage(Person item) {
-        switch (getCurrentLanguage()){
+        switch (Utils.getCurrentLanguage()){
             case En:
                 return item.getPersonData().getEn();
             case Ru:
@@ -84,10 +92,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
         }
     }
 
-    private Language getCurrentLanguage() {
-        //TODO Create language change method
-        return Language.Ru;
-    }
+
 
     @Override
     public int getItemCount() {
