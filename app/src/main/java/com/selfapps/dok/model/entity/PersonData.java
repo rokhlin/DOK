@@ -7,24 +7,24 @@ public class PersonData {
 
     @SerializedName("ru")
     @Expose
-    private MainContent ru;
+    private PersonContent ru;
     @SerializedName("en")
     @Expose
-    private MainContent en;
+    private PersonContent en;
 
-    public MainContent getRu() {
+    public PersonContent getRu() {
         return ru;
     }
 
-    public void setRu(MainContent ru) {
+    public void setRu(PersonContent ru) {
         this.ru = ru;
     }
 
-    public MainContent getEn() {
+    public PersonContent getEn() {
         return en;
     }
 
-    public void setEn(MainContent en) {
+    public void setEn(PersonContent en) {
         this.en = en;
     }
 

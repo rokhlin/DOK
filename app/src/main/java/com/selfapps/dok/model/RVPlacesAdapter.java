@@ -19,10 +19,10 @@ import com.selfapps.dok.model.entity.Place;
 import java.util.ArrayList;
 
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlacesViewHolder> {
+public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.PlacesViewHolder> {
     private ArrayList<Place> places;
 
-    public RVAdapter(ArrayList<Place> places) {
+    public RVPlacesAdapter(ArrayList<Place> places) {
         this.places = places;
     }
 

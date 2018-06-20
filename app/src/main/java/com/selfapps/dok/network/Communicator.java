@@ -9,15 +9,20 @@ import com.bumptech.glide.load.model.LazyHeaders;
 import com.selfapps.dok.App;
 import com.selfapps.dok.GlideApp;
 import com.selfapps.dok.R;
+import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
+import com.selfapps.dok.utils.PreferencesUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -52,8 +57,53 @@ public class Communicator {
         return retrofit.create(ApiInterface.class);
     }
 
+
+    public static void loadUsingGlide(final ImageView container, final String imgName){
+        GlideApp.with(App.getContext())
+                .load(getUrlWithHeaders(NetworkConstants.IMAGE_URL + imgName))
+                .placeholder(R.drawable.ic_launcher_background)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(container);
+    }
+
+    static GlideUrl getUrlWithHeaders(String url){
+        return new GlideUrl(url, new LazyHeaders.Builder()
+                .addHeader("Authorization", AUTHORIZATION)
+                .build());
+    }
+
+    public static void getPersons(final retrofit2.Callback<ArrayList<Person>> callback) {
+        getRetrofitClient().getPersons(getAuthToken()).enqueue(callback);
+    }
+
+    public static void getPlace(final retrofit2.Callback<ArrayList<Place>> callback) {
+        getRetrofitClient().getPoi(getAuthToken()).enqueue(callback);
+    }
+
+    public static void getRoute(final retrofit2.Callback<ArrayList<Route>> callback) {
+        getRetrofitClient().getRoutes(getAuthToken()).enqueue(callback);
+    }
+
+    public static String getAuthToken() {
+        byte[] data = new byte[0];
+        try {
+            data = ("kristirom29@gmail.com" + ":" + "Ma-1-Tp-2").getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "Basic " + Base64.encodeToString(data, Base64.NO_WRAP);
+    }
+
+
+
+
+
+//    public static void getPlaceString(final retrofit2.Callback<String> callback) {
+//        getRetrofitClient().getPoiString(getAuthToken()).enqueue(callback);
+//    }
+
+
 //    public static boolean checkImageOnCache(String imgName) {
-//        //TODO Implement @see #loadImageFromCache(ImageView, String) search file from application cache
 //        return false; //File will be loaded from server
 //    }
 
@@ -86,25 +136,6 @@ public class Communicator {
 //                });
 //
 //    }
-
-    public static void loadUsingGlide(final ImageView container, final String imgName){
-        GlideApp.with(App.getContext())
-                .load(getUrlWithHeaders(NetworkConstants.IMAGE_URL + imgName))
-                .placeholder(R.drawable.ic_launcher_background)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(container);
-
-    }
-
-
-
-
-    static GlideUrl getUrlWithHeaders(String url){
-        return new GlideUrl(url, new LazyHeaders.Builder()
-                .addHeader("Authorization", AUTHORIZATION)
-                .build());
-    }
-
 //    public static void loadImageFromCacheTest(final ImageView container, final String imgName) {
 //        Picasso.get()
 //                .load(new File(Utils.getDiskCacheDir(App.getContext()).getPath()+"/"+imgName))
@@ -131,36 +162,6 @@ public class Communicator {
 //               // .centerCrop()
 //                .into(logo);
 //    }
-
-
-
-    public static void getPersons(final retrofit2.Callback<ArrayList<Person>> callback) {
-        getRetrofitClient().getPersons(getAuthToken()).enqueue(callback);
-    }
-
-    public static void getPlace(final retrofit2.Callback<ArrayList<Place>> callback) {
-        getRetrofitClient().getPoi(getAuthToken()).enqueue(callback);
-    }
-
-//    public static void getPlaceString(final retrofit2.Callback<String> callback) {
-//        getRetrofitClient().getPoiString(getAuthToken()).enqueue(callback);
-//    }
-
-    public static void getRoute(final retrofit2.Callback<ArrayList<Route>> callback) {
-        getRetrofitClient().getRoutes(getAuthToken()).enqueue(callback);
-    }
-
-
-    public static String getAuthToken() {
-        byte[] data = new byte[0];
-        try {
-            data = ("kristirom29@gmail.com" + ":" + "Ma-1-Tp-2").getBytes("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return "Basic " + Base64.encodeToString(data, Base64.NO_WRAP);
-    }
-
 //    class MyAcyncTAsk extends AsyncTask<Void, Void, String> {
 //
 //        @Override

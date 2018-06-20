@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class MainContent {
+public class PersonContent {
     @SerializedName("name")
     @Expose
     private String name;
@@ -14,7 +14,6 @@ class MainContent {
     private Object content;
     @SerializedName("mentionedByList")
     @Expose
-
     private List<Object> mentionedByList = null;
 
     public String getName() {

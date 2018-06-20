@@ -49,12 +49,6 @@ public class EntityProvider<T> {
         }
     }
 
-//    public ArrayList<T> getObjectFromString(String data) throws UnsupportedOperationException {
-//        Type collectionType = new TypeToken<ArrayList<T>>(){}.getType();
-//        return gson.fromJson(data, collectionType);
-//
-//    }
-
     public void requestFromNetwork() {
         Log.d(TAG,"request Data From Network.");
         try {
@@ -73,6 +67,7 @@ public class EntityProvider<T> {
                             listener.onError(t);
                         }
                     });
+                    break;
                 case POI:
                     Communicator.getPlace(new Callback<ArrayList<Place>>() {
                         @Override
@@ -87,6 +82,7 @@ public class EntityProvider<T> {
                             listener.onError(t);
                         }
                     });
+                    break;
                 case ROUTE:
                     Communicator.getRoute(new Callback<ArrayList<Route>>() {
                         @Override
@@ -103,6 +99,7 @@ public class EntityProvider<T> {
                             listener.onError(t);
                         }
                     });
+                    break;
             }
             //Set last updated time
             PreferencesUtil.setLong(Constants.PREF_LAST_UPDATE,System.currentTimeMillis());

@@ -1,4 +1,4 @@
 package com.selfapps.dok.model.entity;
 
-public class Ru extends MainContent {
+public class Ru extends PersonContent {
 }

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.selfapps.dok.view.fragment.PersonsFragment;
 import com.selfapps.dok.view.fragment.PlacesFragment;
 
 /**
@@ -22,7 +23,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new PlacesFragment();
             case 1:
-                return new PlacesFragment();
+                return new PersonsFragment();
             case 2:
                 return new PlacesFragment();
             default:

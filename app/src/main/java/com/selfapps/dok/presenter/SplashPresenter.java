@@ -35,10 +35,17 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 if (finalFlag >= 2){
                     Log.d(TAG, "Loading is finished finalFlag= " + finalFlag);
                     onLoadingFinished();
+                    //debugRun();//Use it to implement test cases
                 } else
                     finalFlag ++;
             }
         };
+    }
+
+    private void debugRun() {
+        Log.d(TAG, "Loading is finished DataType.PERSON = \n" + PreferencesUtil.getData(DataType.PERSON));
+        Log.d(TAG, "Loading is finished DataType.ROUTE = \n" + PreferencesUtil.getData(DataType.ROUTE));
+
     }
 
     @Override
@@ -100,24 +107,6 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 handler.sendEmptyMessage(1);
             }
         }));
-
-
-      //  onLoadingFinished();
-
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while (true){ //start loop
-//                    if (!(finalFlag < 3)) break;
-//                }
-//
-//                //onFinish
-//                Looper.prepare();
-//                onLoadingFinished();
-//                Looper.loop();
-//            }
-//        });
-//        thread.start();
     }
 
 
