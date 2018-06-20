@@ -89,10 +89,6 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
             finish();
     }
 
-    @Override
-    public void showList(List<Entity> entities) {
-
-    }
 
     @Override
     protected void onDestroy() {

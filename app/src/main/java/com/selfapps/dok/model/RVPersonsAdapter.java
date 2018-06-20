@@ -1,5 +1,6 @@
 package com.selfapps.dok.model;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.PersonContent;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.network.Communicator;
+import com.selfapps.dok.utils.Constants;
+import com.selfapps.dok.view.activity.PersonDetailActivity;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,11 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
 
     public void onBindViewHolder(@NonNull RVPersonsAdapter.PersonsViewHolder holder, int position) {
         PersonContent content = getContentByLanguage(persons.get(position));
+
+        //Name set up
         holder.name.setText(content.getName());
+
+        //Logo set up
         try{
             String imgName = null;
             if (persons.get(position).getImageList()!=null ||
@@ -46,10 +54,15 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
         } catch (IndexOutOfBoundsException e) {
             Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
         }
+
+        //Button set up
+        holder.details.setTag(persons.get(position).getId());
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO create open intent
+                Intent intent = new Intent(App.getContext(), PersonDetailActivity.class);
+                intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+                App.getContext().startActivity(intent);
             }
         });
 
@@ -58,7 +71,6 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
         Communicator.loadUsingGlide(logo,imgName);
-        // Communicator.loadImageFromCache(logo, imgName);
     }
 
     private PersonContent getContentByLanguage(Person item) {

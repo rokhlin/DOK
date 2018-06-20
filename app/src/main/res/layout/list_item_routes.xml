@@ -49,7 +49,6 @@
                 android:capitalize="words"
                 android:text="Red Scuare"
                 android:textColor="@android:color/darker_gray"
-                app:barrierAllowsGoneWidgets="true"
                 app:layout_constraintBottom_toBottomOf="@+id/img_photo"
                 app:layout_constraintStart_toStartOf="parent" />
 

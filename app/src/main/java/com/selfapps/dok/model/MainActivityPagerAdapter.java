@@ -1,4 +1,4 @@
-package com.selfapps.dok;
+package com.selfapps.dok.model;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,9 +12,9 @@ import com.selfapps.dok.view.fragment.RoutesFragment;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class MainActivityPagerAdapter extends FragmentPagerAdapter {
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+    public MainActivityPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
