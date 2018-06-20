@@ -1,9 +1,13 @@
 package com.selfapps.dok.model.entity;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.selfapps.dok.utils.Utils;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Route implements Entity {
     @SerializedName("id")
@@ -27,6 +31,13 @@ public class Route implements Entity {
     @SerializedName("updated")
     @Expose
     private long updated;
+
+
+    public Route(String id) {
+        this.id = id;
+    }
+
+    public Route() { }
 
     public String getId() {
         return id;
@@ -84,4 +95,52 @@ public class Route implements Entity {
         this.updated = updated;
     }
 
+    @Override
+    public String getName() {
+        switch (Utils.getCurrentLanguage()){
+            case En:
+                return data.getEn().getName();
+            case Ru:
+                return data.getRu().getName();
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String getContent() {
+        switch (Utils.getCurrentLanguage()){
+            case En:
+                return data.getEn().getContent();
+            case Ru:
+                return data.getRu().getContent();
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String getImagePath() {
+        try{
+            if (getImageList()!=null && getImageList().size() != 0 )
+                return getImageList().get(0);
+        } catch (IndexOutOfBoundsException e) {
+            Log.d("APP","Logo is empty. Image loading error "+e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Route)) return false;
+        Route route = (Route) o;
+        return Objects.equals(id, route.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
+    }
 }

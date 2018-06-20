@@ -11,7 +11,7 @@ public class POIContent {
     private String name;
     @SerializedName("content")
     @Expose
-    private Object content;
+    private String content;
     @SerializedName("address")
     @Expose
     private String address;
@@ -27,11 +27,11 @@ public class POIContent {
         this.name = name;
     }
 
-    public Object getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Object content) {
+    public void setContent(String content) {
         this.content = content;
     }
 

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.selfapps.dok.model.entity.DataType;
+import com.selfapps.dok.model.entity.Entity;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
@@ -26,7 +27,7 @@ public class Converter {
     }
 
 
-    public static ArrayList<Object> getEntityFromString(DataType type, String data) throws UnsupportedOperationException {
+    public static ArrayList<Entity> getEntityFromString(DataType type, String data) throws UnsupportedOperationException {
         getInstance();
         //Converter example: Type collectionType = new TypeToken<ArrayList<Person>>(){}.getType();
         switch (type){
@@ -41,9 +42,9 @@ public class Converter {
         }
     }
 
-    public static String entityToString(Object entity) throws UnsupportedOperationException {
+    public static String entityToString(Object entities) throws UnsupportedOperationException {
         getInstance();
-        return gson.toJson(entity);
+        return gson.toJson(entities);
     }
 
 

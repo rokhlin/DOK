@@ -1,8 +1,13 @@
 package com.selfapps.dok.model.entity;
 
+import android.util.Log;
+
 import java.util.List;
+import java.util.Objects;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.selfapps.dok.utils.Utils;
 
 public class Place implements Entity {
 ////Example
@@ -72,8 +77,51 @@ public class Place implements Entity {
     @Expose
     private long updated;
 
+    public Place(String id) {
+        this.id = id;
+    }
+
+    public Place() { }
+
+
+    @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        switch (Utils.getCurrentLanguage()){
+            case En:
+                return placeData.getEn().getName();
+            case Ru:
+                return placeData.getRu().getName();
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String getContent() {
+        switch (Utils.getCurrentLanguage()){
+            case En:
+                return placeData.getEn().getContent();
+            case Ru:
+                return placeData.getRu().getContent();
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String getImagePath() {
+        try{
+            if (getImageList()!=null && getImageList().size() != 0 )
+                return getImageList().get(0);
+        } catch (IndexOutOfBoundsException e) {
+            Log.d("APP","Logo is empty. Image loading error "+e.getMessage());
+        }
+        return null;
     }
 
     public void setId(String id) {
@@ -148,5 +196,19 @@ public class Place implements Entity {
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Place)) return false;
+        Place place = (Place) o;
+        return Objects.equals(id, place.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
