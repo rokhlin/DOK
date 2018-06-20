@@ -2,6 +2,7 @@ package com.selfapps.dok.model;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.selfapps.dok.network.Communicator;
 import java.util.ArrayList;
 
 public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.PersonsViewHolder> {
+    private static final String TAG = RVPersonsAdapter.class.getSimpleName();
     private ArrayList<Person> persons;
 
     public RVPersonsAdapter(ArrayList<Person> persons) {
@@ -34,14 +36,16 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
     public void onBindViewHolder(@NonNull RVPersonsAdapter.PersonsViewHolder holder, int position) {
         PersonContent content = getContentByLanguage(persons.get(position));
         holder.name.setText(content.getName());
+        try{
+            String imgName = null;
+            if (persons.get(position).getImageList()!=null ||
+                    persons.get(position).getImageList().size()!=0 )
+                imgName = persons.get(position).getImageList().get(0);
 
-        String imgName = null;
-        if (persons.get(position).getImageList()!=null ||
-                persons.get(position).getImageList().size()!=0 )
-            imgName = persons.get(position).getImageList().get(0);
-
-        loadImage(holder.logo, imgName);
-
+            loadImage(holder.logo, imgName);
+        } catch (IndexOutOfBoundsException e) {
+            Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
+        }
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

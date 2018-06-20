@@ -2,6 +2,7 @@ package com.selfapps.dok.model;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 
 public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.PlacesViewHolder> {
+    private static final String TAG = RVPlacesAdapter.class.getSimpleName();
     private ArrayList<Place> places;
 
     public RVPlacesAdapter(ArrayList<Place> places) {
@@ -38,14 +40,16 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
         POIContent content = getPoiContentByLanguage(places.get(position));
         holder.name.setText(content.getName());
         holder.address.setText(content.getAddress());
-
+    try{
         String imgName = null;
         if (places.get(position).getImageList()!=null ||
                 places.get(position).getImageList().size()!=0 )
         imgName = places.get(position).getImageList().get(0);
 
         loadImage(holder.logo, imgName);
-
+    } catch (IndexOutOfBoundsException e) {
+        Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
+    }
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,22 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.selfapps.dok.R;
-import com.selfapps.dok.model.RVPlacesAdapter;
+import com.selfapps.dok.model.RVRoutesAdapter;
 import com.selfapps.dok.model.entity.DataType;
-import com.selfapps.dok.model.entity.Place;
-import com.selfapps.dok.presenter.PlacesPresenter;
+import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
 
 import java.util.ArrayList;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PlacesFragment extends Fragment {
-    PlacesPresenter presenter;
-    public PlacesFragment() {
+public class RoutesFragment extends Fragment {
+
+
+    public RoutesFragment() {
         // Required empty public constructor
     }
 
@@ -33,21 +32,19 @@ public class PlacesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_places, container, false);
-
-        presenter = new PlacesPresenter();
+        View rootView = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
         RecyclerView rv = rootView.findViewById(R.id.recycler_view);
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new RVPlacesAdapter(getPlaces()));
+        rv.setAdapter(new RVRoutesAdapter(getContent()));
         rv.hasFixedSize();
 
         return rootView;
     }
 
-    private ArrayList<Place> getPlaces() {
-        return Converter.getPlacesFromString(PreferencesUtil.getData(DataType.POI));
+    private ArrayList<Route> getContent() {
+        return Converter.getRoutesFromString(PreferencesUtil.getData(DataType.ROUTE));
     }
 
 }

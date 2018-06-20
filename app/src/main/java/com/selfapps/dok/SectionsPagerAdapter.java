@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.selfapps.dok.view.fragment.PersonsFragment;
 import com.selfapps.dok.view.fragment.PlacesFragment;
+import com.selfapps.dok.view.fragment.RoutesFragment;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -25,7 +26,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new PersonsFragment();
             case 2:
-                return new PlacesFragment();
+                return new RoutesFragment();
             default:
                 return null;
         }
