@@ -16,7 +16,7 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.SplashActivity"
             android:label="@string/title_activity_main2"
@@ -30,7 +30,8 @@
         <activity
             android:name=".view.activity.PersonDetailActivity"
             android:label="@string/title_activity_person_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.activity.AdditionalActivity"></activity>
     </application>
 
 </manifest>

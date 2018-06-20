@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.selfapps.dok.model.entity.Language;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,5 +73,10 @@ public class Utils {
         }
 
         return new ArrayList<>(Arrays.asList(fileNames));
+    }
+
+    public static Language getCurrentLanguage() {
+        //TODO Create language change method
+        return Language.Ru;
     }
 }
