@@ -53,9 +53,9 @@ public class Place implements Entity {
     @Expose
     private String articleId;
 
-//    @SerializedName("article")
-//    @Expose
-//    private String article;
+    @SerializedName("article")
+    @Expose
+    private Article article;
 
     @SerializedName("location")
     @Expose
@@ -136,13 +136,13 @@ public class Place implements Entity {
         this.articleId = articleId;
     }
 
-//    public String getArticle() {
-//        return article;
-//    }
-//
-//    public void setArticle(String article) {
-//        this.article = article;
-//    }
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 
     public Location getLocation() {
         return location;

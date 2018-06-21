@@ -17,9 +17,9 @@ public class Person implements Entity {
     @SerializedName("articleId")
     @Expose
     private String articleId;
-//    @SerializedName("article")
-//    @Expose
-//    private Object article;
+    @SerializedName("article")
+    @Expose
+    private Article article;
     @SerializedName("data")
     @Expose
     private PersonData personData;
@@ -62,9 +62,9 @@ public class Person implements Entity {
     public String getContent() {
         switch (Utils.getCurrentLanguage()){
             case En:
-                return personData.getEn().getContent();
+                return article.getData().getEn().getContent();
             case Ru:
-                return personData.getRu().getContent();
+                return article.getData().getRu().getContent();
             default:
                 return null;
         }
@@ -93,13 +93,13 @@ public class Person implements Entity {
         this.articleId = articleId;
     }
 
-//    public Object getArticle() {
-//        return article;
-//    }
-//
-//    public void setArticle(Object article) {
-//        this.article = article;
-//    }
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 
     public PersonData getPersonData() {
         return personData;

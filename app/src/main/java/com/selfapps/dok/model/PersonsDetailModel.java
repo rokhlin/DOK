@@ -22,8 +22,8 @@ public class PersonsDetailModel implements DetailsModel<Person> {
     public PersonsDetailModel(String id, DataType type) {
         //TODO Extract to ABSTRACT after
         ArrayList<Entity> entities = Converter.getEntityFromString(type,PreferencesUtil.getData(type));
-        content = (Person) entities.get(entities.indexOf(new Person(id)))
-        ;    }
+        content = (Person) entities.get(entities.indexOf(new Person(id)));
+    }
 
     @Override
     public Person getContent() {

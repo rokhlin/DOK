@@ -140,7 +140,19 @@ public class Route implements Entity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id='" + id + '\'' +
+                ", data=" + data +
+                ", imageList=" + imageList +
+                ", poiIdList=" + poiIdList +
+                ", poiList=" + poiList +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }
