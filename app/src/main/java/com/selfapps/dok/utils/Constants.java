@@ -12,4 +12,5 @@ public class Constants {
     public static final int PICASSO_CACHE_AGE_IN_HOURS = 7 * 24 ;
     public static final String CONTENT_ID_TAG = "content_id_tag" ;
     public static final String CONTENT_TYPE_TAG = "content_type_tag";
+    public static final String CONTENT_IMAGE_PATH_TAG =  "content_image_tag";
 }

@@ -8,4 +8,12 @@ public class Tag {
         this.type = type;
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "type='" + type + '\'' +
+                ", data='" + data + '\'' +
+                '}';
+    }
 }

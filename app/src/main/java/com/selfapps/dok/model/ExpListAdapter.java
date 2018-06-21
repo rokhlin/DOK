@@ -1,6 +1,8 @@
 package com.selfapps.dok.model;
 
 import android.content.Context;
+
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.selfapps.dok.App;
+import com.selfapps.dok.MyClickListener;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Entity;
@@ -19,10 +22,13 @@ import com.selfapps.dok.network.Communicator;
 import java.util.ArrayList;
 
 public class ExpListAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
+    private static final String TAG =" ExpListAdapter" ;
     ArrayList<ExpListGroup> groups;
+    MyClickListener listener;
 
-    public ExpListAdapter(ArrayList<ExpListGroup> groups) {
+    public ExpListAdapter(ArrayList<ExpListGroup> groups, MyClickListener listener) {
         this.groups = groups;
+        this.listener = listener;
     }
 
     @Override
@@ -116,6 +122,10 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             button.setTag(tag);
 
         }
+        //TODO FIX onItemClick listener interception
+        CardView card = convertView.findViewById(R.id.cv);
+        card.setOnClickListener(this);
+        card.setTag(tag);
 
         Communicator.loadUsingGlide(imageView,imgPath);
 
@@ -133,5 +143,6 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
     @Override
     public void onClick(View v) {
         Tag tag = (Tag) v.getTag();
+        listener.onClick(tag);
     }
 }

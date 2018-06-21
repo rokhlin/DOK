@@ -1,9 +1,11 @@
 package com.selfapps.dok.presenter;
 
+import com.selfapps.dok.MyClickListener;
 import com.selfapps.dok.model.AdditionalScreenModel;
 import com.selfapps.dok.model.IAdditionalScreenModel;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
+import com.selfapps.dok.model.entity.Tag;
 import com.selfapps.dok.view.IAdditionalScreenView;
 
 import java.util.ArrayList;
@@ -11,10 +13,12 @@ import java.util.ArrayList;
 public class AdditionalScreenPresenter implements IAdditionScreenPresenter<IAdditionalScreenView> {
     private IAdditionalScreenView view;
     private IAdditionalScreenModel model;
+    private MyClickListener listener;
 
     public AdditionalScreenPresenter(IAdditionalScreenView view) {
         this.view = view;
         model = new AdditionalScreenModel(view.getId(),view.getType());
+
     }
 
     @Override

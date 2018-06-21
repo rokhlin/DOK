@@ -1,14 +1,17 @@
 package com.selfapps.dok.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
+import com.selfapps.dok.MyClickListener;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.ExpListAdapter;
 import com.selfapps.dok.model.entity.ExpListGroup;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
+import com.selfapps.dok.model.entity.Tag;
 import com.selfapps.dok.presenter.AdditionalScreenPresenter;
 import com.selfapps.dok.utils.Constants;
 import com.selfapps.dok.view.IAdditionalScreenView;
@@ -33,7 +36,22 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
         presenter.viewIsReady();
 
 
-        ExpListAdapter adapter = new ExpListAdapter(groups);
+        ExpListAdapter adapter = new ExpListAdapter(groups, new MyClickListener() {
+            @Override
+            public void onClick(Tag tag) {
+                switch (tag.type){
+                    case "image":
+                        presenter.onImageSelected(tag.data);
+                        break;
+                    case "person":
+                        presenter.onPersonSelected(tag.data);
+                        break;
+                    case "place":
+                        presenter.onPlaceSelected(tag.data);
+                        break;
+                }
+            }
+        });
         listView.setAdapter(adapter);
     }
 
@@ -70,16 +88,23 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
 
     @Override
     public void showImage(String path) {
-
+        Intent intent = new Intent(this,FullscreenActivity.class);
+        intent.putExtra(Constants.CONTENT_IMAGE_PATH_TAG,path);
+        startActivity(intent);
     }
 
     @Override
     public void showPerson(String id) {
+        Intent intent = new Intent(this, PersonDetailActivity.class);
+        intent.putExtra(Constants.CONTENT_ID_TAG, id);
+        startActivity(intent);
 
     }
 
     @Override
     public void showPlace(String id) {
-
+//        Intent intent = new Intent(this, PlacesDetailActivity.class);
+//        intent.putExtra(Constants.CONTENT_ID_TAG, id);
+//        startActivity(intent);
     }
 }
