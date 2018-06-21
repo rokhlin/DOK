@@ -42,7 +42,7 @@ public class PersonsFragment extends Fragment {
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new RVPersonsAdapter(getPersons()));
-        rv.hasFixedSize();
+        //rv.hasFixedSize();
 
         return rootView;
     }

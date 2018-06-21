@@ -9,6 +9,8 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -22,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="18dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@+id/tw_label_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +36,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Places"
+                android:background="#80000000"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/tw_name"
                 app:layout_constraintTop_toBottomOf="@+id/tw_name" />
 
             <TextView
                 android:id="@+id/tw_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="19dp"
                 android:layout_marginStart="16dp"
+                android:background="#80000000"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
                 android:text="Red Scuare"
                 app:layout_constraintBottom_toBottomOf="@+id/img_photo"
                 app:layout_constraintStart_toStartOf="parent" />
