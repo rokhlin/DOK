@@ -16,10 +16,10 @@ import com.selfapps.dok.utils.PreferencesUtil;
 
 import java.util.ArrayList;
 
-public class PersonsDetailModel implements DetailsModel<Person> {
+public class PersonsDetailModelI implements IDetailsModel<Person> {
     Person content;
 
-    public PersonsDetailModel(String id, DataType type) {
+    public PersonsDetailModelI(String id, DataType type) {
         //TODO Extract to ABSTRACT after
         ArrayList<Entity> entities = Converter.getEntityFromString(type,PreferencesUtil.getData(type));
         content = (Person) entities.get(entities.indexOf(new Person(id)));
@@ -38,7 +38,7 @@ public class PersonsDetailModel implements DetailsModel<Person> {
 
     @Override
     public Location getLocation() {
-        return null;//Don't used this
+        return null;//Don't use here
     }
 
     @Override
@@ -48,18 +48,18 @@ public class PersonsDetailModel implements DetailsModel<Person> {
 
     @Override
     public ArrayList<Place> getListPlaces() {
-        return null;//Don't used this
+        return null;//Don't use here
     }
 
 
     @Override
     public ArrayList<Person> getListPersons() {
-        return null;//Don't used this
+        return null;//Don't use here
     }
 
     @Override
     public ArrayList<Route> getListRoutes() {
-        return null;//Don't used this
+        return null;//Don't use here
     }
 
 }

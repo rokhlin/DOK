@@ -11,7 +11,7 @@ import com.selfapps.dok.model.entity.Route;
 
 import java.util.ArrayList;
 
-public interface DetailsModel<C> extends IModel{
+public interface IDetailsModel<C> extends IModel{
 
         C getContent();
         void loadImage(View container);

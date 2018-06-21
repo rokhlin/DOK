@@ -86,12 +86,12 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
             }
         }));
 
-        model.requestPlaces(new EntityProvider<Place>(DataType.POI, new ResultListener<ArrayList<Place>>() {
+        model.requestPlaces(new EntityProvider<Place>(DataType.PLACE, new ResultListener<ArrayList<Place>>() {
             @Override
             protected void onSuccess(ArrayList<Place> entity) {
                 view.setText("Place update");
                 //view.setText(entity.toString());
-                PreferencesUtil.saveData(DataType.POI, Converter.entityToString(entity));
+                PreferencesUtil.saveData(DataType.PLACE, Converter.entityToString(entity));
                 view.postProgress(finalFlag);
                 handler.sendEmptyMessage(1);
             }

@@ -75,6 +75,11 @@ public class Route implements Entity {
         return poiList;
     }
 
+    @Override
+    public List<Person> getPersonList() {
+        return null;
+    }
+
     public void setPoiList(List<Place> poiList) {
         this.poiList = poiList;
     }

@@ -1,15 +1,13 @@
 package com.selfapps.dok.presenter;
 
-import android.widget.ImageView;
-
 import com.selfapps.dok.R;
-import com.selfapps.dok.model.DetailsModel;
+import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
 
-public class PersonsDetailPresenter extends BaseDetailsPresenter<DetailsModel<Person>> {
+public class PersonsDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Person>> {
 
-    public PersonsDetailPresenter(DetailsModel<Person> model, String id) {
+    public PersonsDetailPresenter(IDetailsModel<Person> model, String id) {
         super(model, id);
     }
 
@@ -21,12 +19,12 @@ public class PersonsDetailPresenter extends BaseDetailsPresenter<DetailsModel<Pe
 
     @Override
     public void onMapSelected() {
-
+        //Don't use here
     }
 
     @Override
     public void onPlaceSelected() {
-
+        //Don't use here
     }
 
     @Override

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.selfapps.dok.R;
-import com.selfapps.dok.model.PersonsDetailModel;
+import com.selfapps.dok.model.PersonsDetailModelI;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Person;
@@ -38,7 +38,7 @@ public class PersonDetailActivity extends AppCompatActivity implements DetailsVi
         setContentView(R.layout.activity_person_detail);
         String id = getIntent().getStringExtra(Constants.CONTENT_ID_TAG);
 
-        presenter = new PersonsDetailPresenter(new PersonsDetailModel(id, DataType.PERSON),id);
+        presenter = new PersonsDetailPresenter(new PersonsDetailModelI(id, DataType.PERSON),id);
         presenter.attachView(this);
 
         toolbar = findViewById(R.id.toolbar);

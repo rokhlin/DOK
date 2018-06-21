@@ -35,7 +35,7 @@ public class Converter {
                 return gson.fromJson(data, new TypeToken<ArrayList<Route>>(){}.getType());
             case PERSON:
                 return gson.fromJson(data, new TypeToken<ArrayList<Person>>(){}.getType());
-            case POI:
+            case PLACE:
                 return gson.fromJson(data, new TypeToken<ArrayList<Place>>(){}.getType());
             default:
                 return null;

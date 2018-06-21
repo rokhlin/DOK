@@ -47,7 +47,7 @@ public class PlacesFragment extends Fragment {
     }
 
     private ArrayList<Place> getPlaces() {
-        return Converter.getPlacesFromString(PreferencesUtil.getData(DataType.POI));
+        return Converter.getPlacesFromString(PreferencesUtil.getData(DataType.PLACE));
     }
 
 }

@@ -1,9 +1,9 @@
 package com.selfapps.dok.presenter;
 
-import com.selfapps.dok.model.DetailsModel;
+import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.view.DetailsView;
 
-public abstract class BaseDetailsPresenter<M extends DetailsModel> implements IDetailsPresenter<DetailsView> {
+public abstract class BaseDetailsPresenter<M extends IDetailsModel> implements IDetailsPresenter<DetailsView> {
     String id;
     DetailsView view;
     M model;

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
@@ -14,7 +13,6 @@ import com.selfapps.dok.utils.Constants;
 import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -68,7 +66,7 @@ public class EntityProvider<T> {
                         }
                     });
                     break;
-                case POI:
+                case PLACE:
                     Communicator.getPlace(new Callback<ArrayList<Place>>() {
                         @Override
                         public void onResponse(Call<ArrayList<Place>> call, Response<ArrayList<Place>> response) {

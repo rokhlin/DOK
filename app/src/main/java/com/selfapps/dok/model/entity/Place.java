@@ -124,6 +124,16 @@ public class Place implements Entity {
         return null;
     }
 
+    @Override
+    public List<Place> getPoiList() {
+        return null;
+    }
+
+    @Override
+    public List<Person> getPersonList() {
+        return null;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
