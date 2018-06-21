@@ -1,5 +1,6 @@
 package com.selfapps.dok.model;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,12 +11,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;
+import com.selfapps.dok.utils.Constants;
 import com.selfapps.dok.utils.Utils;
+import com.selfapps.dok.view.activity.PersonDetailActivity;
+import com.selfapps.dok.view.activity.PlaceDetailActivity;
 
 
 import java.util.ArrayList;
@@ -41,20 +46,26 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
         POIContent content = getPoiContentByLanguage(places.get(position));
         holder.name.setText(content.getName());
         holder.address.setText(content.getAddress());
+        String id ="";
     try{
         String imgName = null;
         if (places.get(position).getImageList()!=null ||
                 places.get(position).getImageList().size()!=0 )
         imgName = places.get(position).getImageList().get(0);
 
+        id = places.get(position).getId();
+
         loadImage(holder.logo, imgName);
     } catch (IndexOutOfBoundsException e) {
         Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
     }
+        holder.details.setTag(id);
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO create open intent
+                Intent intent = new Intent(App.getContext(), PlaceDetailActivity.class);
+                intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+                App.getContext().startActivity(intent);
             }
         });
 

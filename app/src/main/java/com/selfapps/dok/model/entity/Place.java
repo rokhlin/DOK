@@ -90,7 +90,7 @@ public class Place implements Entity {
     }
 
     @Override
-    public String getName() {
+    public String getName() {//TODO add NPE catching
         switch (Utils.getCurrentLanguage()){
             case En:
                 return placeData.getEn().getName();
@@ -102,12 +102,12 @@ public class Place implements Entity {
     }
 
     @Override
-    public String getContent() {
+    public String getContent() {//TODO add NPE catching
         switch (Utils.getCurrentLanguage()){
             case En:
-                return placeData.getEn().getContent();
+                return article.getData().getEn().getContent();
             case Ru:
-                return placeData.getRu().getContent();
+                return article.getData().getRu().getContent();
             default:
                 return null;
         }
