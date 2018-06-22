@@ -40,6 +40,10 @@
         <activity
             android:name=".view.activity.PlaceDetailActivity"
             android:label="@string/title_activity_place_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activity.RoutesDetailActivity"
+            android:label="@string/title_activity_routes_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

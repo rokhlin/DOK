@@ -1,5 +1,6 @@
 package com.selfapps.dok.model;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,12 +11,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.model.entity.RouteContent;
 import com.selfapps.dok.network.Communicator;
+import com.selfapps.dok.utils.Constants;
 import com.selfapps.dok.utils.Utils;
+import com.selfapps.dok.view.activity.PlaceDetailActivity;
+import com.selfapps.dok.view.activity.RoutesDetailActivity;
 
 import java.util.ArrayList;
 
@@ -40,35 +45,33 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
         try {
             route = routes.get(position);
             RouteContent content = getContentByLanguage(route);
+
             holder.name.setText(content.getName());
             holder.placesCount.setText(getPlacesCount(route));
 
-        } catch (NullPointerException e) {
-            Log.e(TAG,"RouteContent is empty. Skipping this Item... \nRouteContent error "+e.getMessage());
-            return;
-        }
+            holder.details.setTag(route.getId());
+            holder.details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(App.getContext(), RoutesDetailActivity.class);
+                    intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+                    App.getContext().startActivity(intent);
+                }
+            });
 
-
-
-
-        String imgName = null;
-        try {
+            String imgName = null;
             if (route.getImageList()!= null ||
                     route.getImageList().size()!=0 )
                 imgName = route.getImageList().get(0);
 
             loadImage(holder.logo, imgName);
+
+
         } catch (IndexOutOfBoundsException e) {
-            Log.e(TAG,"Logo is empty. Image loading error "+e.getMessage());
+                Log.e(TAG,"Logo is empty. Image loading error "+e.getMessage());
+        } catch (NullPointerException e) {
+            Log.e(TAG,"RouteContent is empty. Skipping this Item... \nRouteContent error "+e.getMessage());
         }
-
-        holder.details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO create open intent
-            }
-        });
-
     }
 
     private String getPlacesCount(Route route) {
