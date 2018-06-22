@@ -6,12 +6,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.selfapps.dok.App;
 import com.selfapps.dok.MyClickListener;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.ExpListAdapter;
@@ -36,7 +39,7 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
     private FloatingActionButton fab;
     private ImageView logo;
     private TextView info;
-    private ExpandableListView listView;
+    private LinearLayout placesContainer;
     private ArrayList<ExpListGroup> groups = new ArrayList<>();
 
     @Override
@@ -45,13 +48,14 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
         setContentView(R.layout.activity_routes_detail);
         String id = getIntent().getStringExtra(Constants.CONTENT_ID_TAG);
 
-        listView = (ExpandableListView)findViewById(R.id.exListView);
+
         presenter = new RouteDetailPresenter(new RouteDetailModel(id, DataType.ROUTE),id);
         presenter.attachView(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        placesContainer = findViewById(R.id.places_container);
         logo = findViewById(R.id.iv_logo);
         info = findViewById(R.id.tv_content_detail);
 
@@ -86,17 +90,32 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
 
     @Override
     public void showPlacesContent(ArrayList<Place> places) {
-        ExpListGroup group = new ExpListGroup();
-        group.setPlaces(places);
-        groups.add(group);
+        for (Place place : places) {
+            final Location location = place.getLocation();
+            LayoutInflater ltInflater = getLayoutInflater();
+            View view = ltInflater.inflate(R.layout.list_item_persons, null);
+            TextView name = (TextView) view.findViewById(R.id.tw_name1);
+            TextView marker = (TextView) view.findViewById(R.id.tv_type_marker);
+            TextView details =(TextView) view.findViewById(R.id.btn_details);
+            ImageView logo = (ImageView) view.findViewById(R.id.img_photo1);
+            View divider = view.findViewById(R.id.divider);
 
-        ExpListAdapter adapter = new ExpListAdapter(groups, new MyClickListener() {
-            @Override
-            public void onClick(Tag tag) {
+            divider.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
 
-            }
-        });
-        listView.setAdapter(adapter);
+            name.setText(place.getName());
+            name.setTextSize(14);
+            marker.setText("place");
+            details.setText("open map >");
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onMapSelected(location);
+                }
+            });
+            placesContainer.addView(view);
+        }
 
     }
 
@@ -113,7 +132,9 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
 
     @Override
     public void showMap(Location location) {
-        //Don't use here
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.setData(location.getGeoUri(presenter.getName()));
+        App.getContext().startActivity(mapIntent);
     }
 
     @Override

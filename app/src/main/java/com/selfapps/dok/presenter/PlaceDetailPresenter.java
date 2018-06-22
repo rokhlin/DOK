@@ -6,6 +6,7 @@ import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.model.entity.DataType;
+import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Place;
 
 public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Place>> {
@@ -22,10 +23,9 @@ public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Pla
     }
 
     @Override
-    public void onMapSelected() {
+    public void onMapSelected(Location location) {
         Intent mapIntent = new Intent(Intent.ACTION_VIEW);
-        mapIntent.setData(model.getLocation()
-                 .getGeoUri(model.getContent().getName()));
+        mapIntent.setData(location.getGeoUri(model.getContent().getName()));
         App.getContext().startActivity(mapIntent);
     }
 

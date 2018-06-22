@@ -1,10 +1,14 @@
 package com.selfapps.dok.presenter;
 
+import android.content.Intent;
+
+import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.model.entity.DataType;
 
 import com.selfapps.dok.model.entity.ExpListGroup;
+import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Route;
 
 import java.util.ArrayList;
@@ -22,13 +26,20 @@ public class RouteDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Rou
     }
 
     @Override
-    public void onMapSelected() {
-        //Don't use here
+    public void onMapSelected(Location location) {
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.setData(location.getGeoUri(model.getContent().getName()));
+        App.getContext().startActivity(mapIntent);
     }
 
     @Override
     public void onPlaceSelected() {
         //Don't use here
+    }
+
+
+    public String getName(){
+        return model.getContent().getName();
     }
 
     @Override

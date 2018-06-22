@@ -93,11 +93,11 @@ public class PlaceDetailActivity extends AppCompatActivity implements DetailsVie
 
 
     @Override
-    public void showMap(Location location) {
+    public void showMap(final Location location) {
         showMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onMapSelected();
+                presenter.onMapSelected(location);
             }
         });
     }

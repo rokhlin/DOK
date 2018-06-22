@@ -3,6 +3,7 @@ package com.selfapps.dok.presenter;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.model.entity.DataType;
+import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Person;
 
 public class PersonsDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Person>> {
@@ -18,7 +19,7 @@ public class PersonsDetailPresenter extends BaseDetailsPresenter<IDetailsModel<P
     }
 
     @Override
-    public void onMapSelected() {
+    public void onMapSelected(Location location) {
         //Don't use here
     }
 
