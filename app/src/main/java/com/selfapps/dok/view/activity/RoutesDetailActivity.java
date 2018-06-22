@@ -100,13 +100,14 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
             ImageView logo = (ImageView) view.findViewById(R.id.img_photo1);
             View divider = view.findViewById(R.id.divider);
 
+            details.setVisibility(View.GONE);
             divider.setVisibility(View.GONE);
             logo.setVisibility(View.GONE);
 
             name.setText(place.getName());
             name.setTextSize(14);
-            marker.setText("place");
-            details.setText("open map >");
+            marker.setText(place.getAddress());
+            //details.setText("To map >");
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -113,6 +113,17 @@ public class Place implements Entity {
         }
     }
 
+    public String getAddress() {
+        switch (Utils.getCurrentLanguage()){
+            case En:
+                return placeData.getEn().getAddress();
+            case Ru:
+                return placeData.getRu().getAddress();
+            default:
+                return "";
+        }
+    }
+
     @Override
     public String getImagePath() {
         try{
