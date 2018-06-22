@@ -1,16 +1,15 @@
 package com.selfapps.dok.presenter;
 
 import android.content.Intent;
-import android.net.Uri;
 
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.IDetailsModel;
 import com.selfapps.dok.model.entity.DataType;
-import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Place;
 
 public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Place>> {
+    private static final String TAG =" PlaceDetailPresenter" ;
 
     public PlaceDetailPresenter(IDetailsModel<Place> model, String id) {
         super(model, id);
@@ -24,13 +23,10 @@ public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Pla
 
     @Override
     public void onMapSelected() {
-        Location location = model.getLocation();
-        Uri gmmIntentUri = Uri.parse("geo:"+location.getLatitude()+","+location.getLongitude());
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-       // mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(App.getContext().getPackageManager()) != null) {
-            App.getContext().startActivity(mapIntent);
-        }
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.setData(model.getLocation()
+                 .getGeoUri(model.getContent().getName()));
+        App.getContext().startActivity(mapIntent);
     }
 
     @Override

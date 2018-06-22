@@ -8,12 +8,25 @@
     tools:context=".view.activity.PlaceDetailActivity"
     tools:showIn="@layout/activity_place_detail">
 
-    <TextView
-        android:id="@+id/tv_content_detail"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_show_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Show map" />
+        <TextView
+            android:id="@+id/tv_content_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/large_text" />
+    </LinearLayout>
+
 
 
 </android.support.v4.widget.NestedScrollView>

@@ -1,5 +1,7 @@
 package com.selfapps.dok.model.entity;
 
+import android.net.Uri;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -29,4 +31,15 @@ public class Location {
         this.longitude = longitude;
     }
 
+    public Uri getGeoUri(String label){
+        return Uri.parse("geo:"+getLatitude()+","+getLongitude()+"?z=16&q="+getLatitude()+","+getLongitude()+"("+label+")");
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
 }
