@@ -7,43 +7,12 @@ import java.util.Objects;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.selfapps.dok.App;
+import com.selfapps.dok.R;
 import com.selfapps.dok.utils.Utils;
 
 public class Place implements Entity {
-////Example
-//    {
-//        "id":"630cc946-f47c-4ed6-8adb-a1591d8cfc8e",
-//            "articleId":null,
-//            "article":null,
-//            "location":{
-//        "latitude":48.4620939,
-//                "longitude":35.05175059999999
-//    },
-//        "data":{
-//        "ru":{
-//            "name":"�������� ��� ����� ����������",
-//                    "content":null,
-//                    "address":"��. �����������, 2, ������, ���������������� �������, �������, 49000",
-//                    "mentionedByList":[
-//
-//        ]
-//        },
-//        "en":{
-//            "name":null,
-//                    "content":null,
-//                    "address":null,
-//                    "mentionedByList":[
-//
-//        ]
-//        }
-//    },
-//        "imageList":[
-//        "b886ee61-fee7-4480-9e42-149a961b3dc2.jpg",
-//                "b35d8632-69a9-4b7c-8ae8-ed63b5e4e912.jpg"
-//    ],
-//        "created":1527256731391,
-//            "updated":1527256924791
-//    }
+    private static final String TAG = "Place";
 
     @SerializedName("id")
     @Expose
@@ -91,26 +60,36 @@ public class Place implements Entity {
 
     @Override
     public String getName() {//TODO add NPE catching
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return placeData.getEn().getName();
-            case Ru:
-                return placeData.getRu().getName();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return placeData.getEn().getName();
+                case Ru:
+                    return placeData.getRu().getName();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "getName: is null");
         }
+        return App.getContext().getString(R.string.name_undefined);
     }
 
     @Override
     public String getContent() {//TODO add NPE catching
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return article.getData().getEn().getContent();
-            case Ru:
-                return article.getData().getRu().getContent();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return article.getData().getEn().getContent();
+                case Ru:
+                    return article.getData().getRu().getContent();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "getContent: is null");
         }
+        return "";
     }
 
     public String getAddress() {

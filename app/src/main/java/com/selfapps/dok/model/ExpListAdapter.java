@@ -26,6 +26,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
     private ArrayList<ExpListGroup> groups;
     private MyClickListener listener;
 
+
     public ExpListAdapter(ArrayList<ExpListGroup> groups, MyClickListener listener) {
         this.groups = groups;
         this.listener = listener;
@@ -135,7 +136,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             button.setTag(tag);
 
         }
-        Communicator.loadUsingGlide(imageView,imgPath);
+        Communicator.loadUsingGlide(imageView,imgPath,R.drawable.place_holder);
 
         return convertView;
     }

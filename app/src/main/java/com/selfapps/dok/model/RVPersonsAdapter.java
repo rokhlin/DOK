@@ -78,7 +78,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-        Communicator.loadUsingGlide(logo,imgName);
+        Communicator.loadUsingGlide(logo,imgName,R.drawable.siluet);
     }
 
     private PersonContent getContentByLanguage(Person item) {

@@ -3,6 +3,7 @@ package com.selfapps.dok.model;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Entity;
 import com.selfapps.dok.model.entity.Location;
@@ -31,7 +32,7 @@ public class PlacesDetailModel implements IDetailsModel<Place> {
 
     @Override
     public void loadImage(View container) {
-        Communicator.loadUsingGlide((ImageView) container,content.getImagePath());
+        Communicator.loadUsingGlide((ImageView) container,content.getImagePath(), R.drawable.place_holder);
     }
 
 

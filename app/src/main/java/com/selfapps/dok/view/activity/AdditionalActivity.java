@@ -25,6 +25,8 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
     private String id;
     private AdditionalScreenPresenter presenter;
     private ArrayList<ExpListGroup> groups = new ArrayList<>();
+    private ExpandableListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,8 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
 
         id = getIntent().getStringExtra(Constants.CONTENT_ID_TAG);
         type = getIntent().getStringExtra(Constants.CONTENT_TYPE_TAG);
-        ExpandableListView listView = (ExpandableListView)findViewById(R.id.exListView);
+
+        listView = (ExpandableListView)findViewById(R.id.exListView);
 
         presenter = new AdditionalScreenPresenter(this);
         presenter.viewIsReady();
@@ -58,6 +61,14 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
             }
         });
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        for (int i = 0; i <groups.size() ; i++) {
+            listView.expandGroup(i);
+        }
     }
 
     @Override

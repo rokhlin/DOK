@@ -101,7 +101,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-        Communicator.loadUsingGlide(logo,imgName);
+        Communicator.loadUsingGlide(logo,imgName,R.drawable.place_holder);
         // Communicator.loadImageFromCache(logo, imgName);
     }
 

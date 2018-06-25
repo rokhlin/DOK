@@ -4,12 +4,15 @@ import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.selfapps.dok.App;
+import com.selfapps.dok.R;
 import com.selfapps.dok.utils.Utils;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Route implements Entity {
+    private static final String TAG = "Route";
     @SerializedName("id")
     @Expose
     private String id;
@@ -102,26 +105,36 @@ public class Route implements Entity {
 
     @Override
     public String getName() {
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return data.getEn().getName();
-            case Ru:
-                return data.getRu().getName();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return data.getEn().getName();
+                case Ru:
+                    return data.getRu().getName();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "getName: is null");
         }
+        return App.getContext().getString(R.string.name_undefined);
     }
 
     @Override
     public String getContent() {
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return data.getEn().getContent();
-            case Ru:
-                return data.getRu().getContent();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return data.getEn().getContent();
+                case Ru:
+                    return data.getRu().getContent();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "getContent: is null");
         }
+        return "";
     }
 
     @Override

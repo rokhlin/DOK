@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.selfapps.dok.App;
+import com.selfapps.dok.R;
 import com.selfapps.dok.utils.Utils;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Objects;
 
 public class Person implements Entity {
 
+    private static final String TAG ="Person" ;
     @SerializedName("id")
     @Expose
     private String id;
@@ -48,26 +51,36 @@ public class Person implements Entity {
 
     @Override
     public String getName() {
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return personData.getEn().getName();
-            case Ru:
-                return personData.getRu().getName();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return personData.getEn().getName();
+                case Ru:
+                    return personData.getRu().getName();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "getName: is null");
         }
+        return App.getContext().getString(R.string.name_undefined);
     }
 
     @Override
     public String getContent() {
-        switch (Utils.getCurrentLanguage()){
-            case En:
-                return article.getData().getEn().getContent();
-            case Ru:
-                return article.getData().getRu().getContent();
-            default:
-                return null;
+        try {
+            switch (Utils.getCurrentLanguage()){
+                case En:
+                    return article.getData().getEn().getContent();
+                case Ru:
+                    return article.getData().getRu().getContent();
+                default:
+                    return null;
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "getContent: is null");
         }
+        return "";
     }
 
     @Override

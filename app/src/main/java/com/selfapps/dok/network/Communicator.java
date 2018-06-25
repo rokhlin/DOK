@@ -61,10 +61,10 @@ public class Communicator {
     }
 
 
-    public static void loadUsingGlide(final ImageView container, final String imgName){
+    public static void loadUsingGlide(final ImageView container, final String imgName,int placeholder){
         GlideApp.with(App.getContext())
                 .load(getUrlWithHeaders(NetworkConstants.IMAGE_URL + imgName))
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(placeholder)
                 .apply(bitmapTransform(new SepiaFilterTransformation()))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(container);
