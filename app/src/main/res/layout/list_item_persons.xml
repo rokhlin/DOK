@@ -61,6 +61,7 @@
                         android:layout_weight="1"
                         android:gravity="left|start"
                         android:text="@string/label_people"
+                        android:textStyle="bold"
                         app:layout_editor_absoluteX="104dp"
                         app:layout_editor_absoluteY="61dp" />
 
@@ -74,6 +75,7 @@
                         android:paddingEnd="@dimen/typical_padding"
                         android:paddingRight="@dimen/typical_padding"
                         android:text="@string/text_button_details"
+                        android:textColor="@color/textColorBright"
                         app:layout_editor_absoluteX="310dp"
                         app:layout_editor_absoluteY="61dp" />
                 </LinearLayout>

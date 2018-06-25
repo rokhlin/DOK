@@ -44,7 +44,9 @@
         <activity
             android:name=".view.activity.RoutesDetailActivity"
             android:label="@string/title_activity_routes_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.activity.MenuActivity" />
+        <activity android:name=".view.activity.SearchActivity"></activity>
     </application>
 
 </manifest>

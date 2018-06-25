@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.MainActivityPagerAdapter;
+import com.selfapps.dok.utils.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        int id = getIntent().getIntExtra(Constants.CONTENT_TAB_ID,-1);
 
         mMainActivityPagerAdapter = new MainActivityPagerAdapter(getSupportFragmentManager());
 
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        if(id >= 0) mViewPager.setCurrentItem(id);
     }
 
 

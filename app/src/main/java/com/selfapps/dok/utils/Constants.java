@@ -13,4 +13,5 @@ public class Constants {
     public static final String CONTENT_ID_TAG = "content_id_tag" ;
     public static final String CONTENT_TYPE_TAG = "content_type_tag";
     public static final String CONTENT_IMAGE_PATH_TAG =  "content_image_tag";
+    public static final String CONTENT_TAB_ID = "content_tab_id";
 }
