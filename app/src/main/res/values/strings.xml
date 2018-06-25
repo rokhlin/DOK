@@ -109,4 +109,11 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_place_detail">PlaceDetailActivity</string>
     <string name="title_activity_routes_detail">RoutesDetailActivity</string>
+    <string name="adrress">Adress</string>
+    <string name="places">Places</string>
+    <string name="btn_details">Details</string>
+    <string name="label_people">People</string>
+    <string name="text_button_details"><![CDATA[Details >]]></string>
+    <string name="label_name">Name</string>
+    <string name="btn_show_map">Show map</string>
 </resources>

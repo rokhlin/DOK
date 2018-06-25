@@ -24,6 +24,7 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
+        getSupportActionBar().hide();
 
         String imgPath = getIntent().getStringExtra(Constants.CONTENT_IMAGE_PATH_TAG);
         PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);

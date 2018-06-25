@@ -6,4 +6,9 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="app_bar_height">220dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="rounded_button_height">32dp</dimen>
+    <dimen name="content_place_btn_padding">8dp</dimen>
+    <dimen name="typical_margin">8dp</dimen>
+    <dimen name="typical_padding">8dp</dimen>
+
 </resources>

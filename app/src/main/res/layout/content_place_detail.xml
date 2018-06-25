@@ -16,9 +16,13 @@
         <Button
             android:id="@+id/btn_show_map"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/rounded_button_height"
             android:layout_gravity="center_horizontal"
-            android:text="Show map" />
+            android:layout_marginTop="@dimen/typical_margin"
+            android:padding="@dimen/content_place_btn_padding"
+            android:background="@drawable/round_shape_btn"
+            android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:text="@string/btn_show_map" />
         <TextView
             android:id="@+id/tv_content_detail"
             android:layout_width="match_parent"

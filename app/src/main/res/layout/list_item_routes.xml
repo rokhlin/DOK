@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#80000000"
-                android:text="Places"
+                android:text="@string/places"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintStart_toStartOf="@+id/tw_name"
                 app:layout_constraintTop_toBottomOf="@+id/tw_name" />
@@ -48,7 +48,6 @@
                 android:layout_marginBottom="36dp"
                 android:layout_marginStart="4dp"
                 android:background="#80000000"
-                android:capitalize="words"
                 android:text="Red Scuare"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintBottom_toBottomOf="@+id/img_photo"
@@ -77,16 +76,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="places" />
+                    android:text="@string/places" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_details"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/rounded_button_height"
                 android:layout_marginBottom="16dp"
                 android:layout_marginStart="148dp"
-                android:text="Details"
+                android:background="@drawable/round_shape_btn"
+                android:text="@string/btn_details"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
