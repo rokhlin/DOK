@@ -35,7 +35,7 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
                 if (finalFlag >= 2){
                     Log.d(TAG, "Loading is finished finalFlag= " + finalFlag);
                     onLoadingFinished();
-                    //debugRun();//Use it to implement test cases
+                   //debugRun();//Use it to implement test cases
                 } else
                     finalFlag ++;
             }

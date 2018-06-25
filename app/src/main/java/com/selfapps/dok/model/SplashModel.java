@@ -18,6 +18,7 @@ public class SplashModel implements ISplashModel {
 
     @Override
     public boolean isDataValid(DataType type) {
+        //return false;//Only for testing
         return getData(type).length() > 4
                 & getLong(Constants.PREF_LAST_UPDATE,0) > getExpiredTime();
     }

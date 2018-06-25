@@ -10,17 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.selfapps.dok.R;
-import com.selfapps.dok.model.entity.Entity;
 import com.selfapps.dok.presenter.SplashPresenter;
 import com.selfapps.dok.view.SplashView;
-
-import java.util.List;
+import com.tubitv.ui.TubiLoadingView;
 
 public class SplashActivity extends AppCompatActivity implements SplashView {
     private static final String TAG = SplashActivity.class.getSimpleName();
-    private Button clear, update;
-    private TextView container;
-    private ImageView imageView;
+    private TubiLoadingView progress;
 
     SplashPresenter presenter;
 
@@ -30,27 +26,13 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         setContentView(R.layout.activity_splash);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().hide();
 
 
+        progress = findViewById(R.id.progress);
         presenter = new SplashPresenter();
         presenter.attachView(this);
 
-        container = (TextView) findViewById(R.id.tv_text);
-        imageView = (ImageView) findViewById(R.id.img_test);
-        update = (Button) findViewById(R.id.btn_update);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.viewIsReady();
-            }
-        });
-        clear = (Button) findViewById(R.id.btn_clear);
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                container.setText("");
-            }
-        });
 
         presenter.viewIsReady();
     }
@@ -61,25 +43,21 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     public void updateProgress(boolean isActive) {
         //TODO replace test behavior with real progress
         if(isActive){
-            container.setText("loading...");
+           progress.start();
         }else {
-            setText("Loading Finished");
+           progress.stop();
         }
     }
 
     @Override
     public void postProgress(int progress) {
         //TODO replace test behavior with real progress
-        int step = 100/3;
-        container.setText(container.getText()+"\n"+"finished: "+step*progress +"%");
+
     }
 
     @Override
     public void setText(String text) {
         //TODO check necessity
-        container.setText(container.getText()
-                +"\n"
-                +text);
     }
 
     @Override
