@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+
 import com.selfapps.dok.App;
 import com.selfapps.dok.GlideApp;
 import com.selfapps.dok.R;
@@ -14,6 +15,7 @@ import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.utils.PreferencesUtil;
+import com.selfapps.dok.utils.SepiaFilterTransformation;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.selfapps.dok.GlideOptions.bitmapTransform;
 import static com.selfapps.dok.network.NetworkConstants.BASE_URL;
 
 /**
@@ -62,6 +65,7 @@ public class Communicator {
         GlideApp.with(App.getContext())
                 .load(getUrlWithHeaders(NetworkConstants.IMAGE_URL + imgName))
                 .placeholder(R.drawable.ic_launcher_background)
+                .apply(bitmapTransform(new SepiaFilterTransformation()))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(container);
     }
