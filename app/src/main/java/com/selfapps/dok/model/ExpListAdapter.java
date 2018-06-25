@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 public class ExpListAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
     private static final String TAG =" ExpListAdapter" ;
-    ArrayList<ExpListGroup> groups;
-    MyClickListener listener;
+    private ArrayList<ExpListGroup> groups;
+    private MyClickListener listener;
 
     public ExpListAdapter(ArrayList<ExpListGroup> groups, MyClickListener listener) {
         this.groups = groups;
@@ -86,27 +86,39 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
         }
 
         TextView textGroup = (TextView) convertView.findViewById(R.id.textGroup);
-        textGroup.setText(groups.get(groupPosition).getType().name() +"S");
+        textGroup.setText(getGroupName(groupPosition));
 
         return convertView;
+    }
+
+    private String getGroupName(int groupPosition) {
+        return groups.get(groupPosition).getType().name() +"S";
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         DataType itemType =  groups.get(groupPosition).getType();
-        Tag tag;
-
-        LayoutInflater inflater = (LayoutInflater)  App.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ImageView imageView;
         String imgPath = "";
+        LayoutInflater inflater = (LayoutInflater)  App.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        //Loading Image strategy
         if(itemType.equals(DataType.IMAGE)){
             imgPath = groups.get(groupPosition).getImageList().get(childPosition);
-            tag = new Tag(itemType.name(),imgPath);
+            final Tag tag = new Tag(itemType.name(),imgPath);
+
+            assert inflater != null;
             convertView = inflater.inflate(R.layout.list_item_image, null);
-
             imageView = convertView.findViewById(R.id.img_photo);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(tag);
+                }
+            });
 
-        }else {
+        }else {//Loading Entity strategy
+            assert inflater != null;
             convertView = inflater.inflate(R.layout.list_item_persons, null);
             imageView = convertView.findViewById(R.id.img_photo1);
             TextView name = convertView.findViewById(R.id.tw_name1);
@@ -117,20 +129,13 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             imgPath = entity.getImageList().get(0);
             strType.setText(itemType.name().toLowerCase());
             name.setText(entity.getName());
-            tag = new Tag(itemType.name(),entity.getId());
+
+            final Tag tag = new Tag(itemType.name(),entity.getId());
             button.setOnClickListener(this);
             button.setTag(tag);
 
         }
-        //TODO FIX onItemClick listener interception
-        CardView card = convertView.findViewById(R.id.cv);
-        card.setOnClickListener(this);
-        card.setTag(tag);
-
         Communicator.loadUsingGlide(imageView,imgPath);
-
-        convertView.setTag(tag);
-        convertView.setOnClickListener(this);
 
         return convertView;
     }

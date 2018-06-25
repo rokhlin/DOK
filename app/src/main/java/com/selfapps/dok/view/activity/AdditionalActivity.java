@@ -3,6 +3,7 @@ package com.selfapps.dok.view.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ExpandableListView;
 
 import com.selfapps.dok.MyClickListener;
@@ -19,6 +20,7 @@ import com.selfapps.dok.view.IAdditionalScreenView;
 import java.util.ArrayList;
 
 public class AdditionalActivity extends AppCompatActivity implements IAdditionalScreenView {
+    private static final String TAG ="AdditionalActivity " ;
     private String type;
     private String id;
     private AdditionalScreenPresenter presenter;
@@ -39,14 +41,17 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
         ExpListAdapter adapter = new ExpListAdapter(groups, new MyClickListener() {
             @Override
             public void onClick(Tag tag) {
+                if(tag ==null) return;
+
+                Log.d(TAG, "onClick: tag="+tag.toString());
                 switch (tag.type){
-                    case "image":
+                    case "IMAGE":
                         presenter.onImageSelected(tag.data);
                         break;
-                    case "person":
+                    case "PERSON":
                         presenter.onPersonSelected(tag.data);
                         break;
-                    case "place":
+                    case "PLACE":
                         presenter.onPlaceSelected(tag.data);
                         break;
                 }
@@ -103,8 +108,8 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
 
     @Override
     public void showPlace(String id) {
-//        Intent intent = new Intent(this, PlacesDetailActivity.class);
-//        intent.putExtra(Constants.CONTENT_ID_TAG, id);
-//        startActivity(intent);
+        Intent intent = new Intent(this, PlaceDetailActivity.class);
+        intent.putExtra(Constants.CONTENT_ID_TAG, id);
+        startActivity(intent);
     }
 }

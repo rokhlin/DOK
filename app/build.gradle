@@ -24,6 +24,7 @@ ext {
 repositories {
     mavenCentral()
     google()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -36,7 +37,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$androidLibrary"
     implementation "com.android.support:cardview-v7:$androidLibrary"
     implementation "net.opacapp:multiline-collapsingtoolbar:27.1.1"
-    // implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     // implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
