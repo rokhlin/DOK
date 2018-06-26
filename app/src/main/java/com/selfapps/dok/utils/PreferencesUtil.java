@@ -44,9 +44,9 @@ public class PreferencesUtil {
         return preferences.getLong(key,defValue);
     }
 
-    public static int getBoolean(String key,@Nullable int defValue){
+    public static boolean getBoolean(String key,@Nullable boolean defValue){
         getInstance(App.getContext());
-        return preferences.getInt(key,defValue);
+        return preferences.getBoolean(key,defValue);
     }
 
 

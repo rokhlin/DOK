@@ -18,7 +18,6 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/logo_big" />
 
@@ -30,22 +29,26 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp"
+                android:gravity="center"
                 android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/textColorBright"
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <ImageView
             android:id="@+id/btn_search"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             app:srcCompat="@drawable/ic_search_24dp" />
     </LinearLayout>
     <LinearLayout

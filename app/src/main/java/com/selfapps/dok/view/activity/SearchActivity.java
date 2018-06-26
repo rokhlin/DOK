@@ -1,9 +1,13 @@
 package com.selfapps.dok.view.activity;
 
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -12,7 +16,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.selfapps.dok.MyClickListener;
 import com.selfapps.dok.R;
@@ -22,6 +29,7 @@ import com.selfapps.dok.model.entity.ExpListGroup;
 import com.selfapps.dok.model.entity.Tag;
 import com.selfapps.dok.presenter.SearchPresenter;
 import com.selfapps.dok.utils.Constants;
+import com.selfapps.dok.utils.PreferencesUtil;
 import com.selfapps.dok.view.ISearchView;
 
 import java.util.ArrayList;
@@ -138,7 +146,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
     @Override
-    public void setSearchViewActive() {
+    public void setSearchViewActive() {//todo rename method
         for (int i = 0; i <groups.size() ; i++) {
             listView.expandGroup(i);
         }

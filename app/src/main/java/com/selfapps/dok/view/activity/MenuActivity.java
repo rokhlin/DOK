@@ -1,6 +1,9 @@
 package com.selfapps.dok.view.activity;
 
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.selfapps.dok.R;
 import com.selfapps.dok.utils.Constants;
+import com.selfapps.dok.utils.PreferencesUtil;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +30,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         containerPlaces.setOnClickListener(this);
         containerRoutes.setOnClickListener(this);
         search.setOnClickListener(this);
+
+        if(!PreferencesUtil.getBoolean(Constants.PREF_SPONSORED_DIALOG,false)){
+            createDialog().show();
+        }
+
 
     }
 
@@ -52,5 +61,20 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(MenuActivity.this,MainActivity.class);
         }
         startActivity(intent);
+    }
+
+
+    public AlertDialog createDialog() {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setView(getLayoutInflater().inflate(R.layout.sponsored_dialog, null));
+        adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              //  PreferencesUtil.setBoolean(Constants.PREF_SPONSORED_DIALOG,true);
+                dialog.dismiss();
+            }
+        });
+        return adb.create();
+
     }
 }

@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="autoCompleteTextViewStyle">@style/SearchAutoCompleteTextView</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -28,6 +29,12 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
+    <style name="SearchAutoCompleteTextView" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textColor">@color/textColorBright</item>
+        <item name="android:textColorHint">@color/textColorBright</item>
+    </style>
+
 
     <style name="MenuContentTheme" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
