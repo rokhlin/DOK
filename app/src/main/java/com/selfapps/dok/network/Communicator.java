@@ -72,7 +72,7 @@ public class Communicator {
     static GlideUrl getUrlWithHeaders(String url){
         return new GlideUrl(url, new LazyHeaders.Builder()
                 .addHeader(App.getContext().getString(R.string.au_full),
-                         App.getContext().getString(R.string.basic0)
+                         App.getContext().getString(R.string.basic0)+" "
                         +App.getContext().getString(R.string.basic1)
                         +App.getContext().getString(R.string.basic2))
                 .build());
@@ -102,7 +102,7 @@ public class Communicator {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return  App.getContext().getString(R.string.basic0) + Base64.encodeToString(data, Base64.NO_WRAP);
+        return  App.getContext().getString(R.string.basic0)+" " + Base64.encodeToString(data, Base64.NO_WRAP);
     }
 
 }

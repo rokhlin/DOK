@@ -18,6 +18,7 @@ import com.selfapps.dok.model.entity.Entity;
 import com.selfapps.dok.model.entity.ExpListGroup;
 import com.selfapps.dok.model.entity.Tag;
 import com.selfapps.dok.network.Communicator;
+import com.selfapps.dok.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -94,7 +95,29 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
 
     private String getGroupName(int groupPosition) {
         //TODO separate to different language support
-        return groups.get(groupPosition).getType().toString() +"S";
+        switch (Utils.getCurrentLanguage()){
+            case Ru:
+                return getRuGroupName(groupPosition);
+            case En:
+                return groups.get(groupPosition).getType().toString() +"S";
+            default:
+                return groups.get(groupPosition).getType().toString() +"S";
+        }
+    }
+
+    private String getRuGroupName(int groupPosition) {
+        switch (groups.get(groupPosition).getType()){
+            case PERSON:
+                return App.getContext().getResources().getString(R.string.persons);
+            case ROUTE:
+                return App.getContext().getResources().getString(R.string.routes);
+            case PLACE:
+                return App.getContext().getResources().getString(R.string.places);
+            case IMAGE:
+                return App.getContext().getResources().getString(R.string.images);
+            default:
+                return App.getContext().getResources().getString(R.string.name_undefined);
+        }
     }
 
     @Override
