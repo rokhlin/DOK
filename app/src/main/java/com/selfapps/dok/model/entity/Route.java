@@ -157,6 +157,11 @@ public class Route implements Entity {
     }
 
     @Override
+    public boolean contains(String string) {
+        return getName().toLowerCase().contains(string);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id);
     }

@@ -93,7 +93,8 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
     }
 
     private String getGroupName(int groupPosition) {
-        return groups.get(groupPosition).getType().name() +"S";
+        //TODO separate to different language support
+        return groups.get(groupPosition).getType().toString() +"S";
     }
 
     @Override
@@ -150,5 +151,10 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
     public void onClick(View v) {
         Tag tag = (Tag) v.getTag();
         listener.onClick(tag);
+    }
+
+    public void notifyDataSetChanged(ArrayList<ExpListGroup> groups){
+        this.groups = groups;
+        this.notifyDataSetChanged();
     }
 }

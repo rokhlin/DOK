@@ -58,7 +58,7 @@ public class ExpListGroup {
                 case ROUTE:
                     return routes.size();
                 case PERSON:
-                    return routes.size();
+                    return persons.size();
                 case PLACE:
                     return places.size();
                 case IMAGE:
@@ -68,5 +68,20 @@ public class ExpListGroup {
         return 0;
     }
 
+//    public boolean contains(String query){
+//        try {
+//            switch (type){
+//                case ROUTE:
+//                    return routes.contains(query);
+//                case PERSON:
+//                    return persons.contains(query);
+//                case PLACE:
+//                    return places.contains(query);
+//                case IMAGE:
+//                    return false;
+//            }
+//        } catch (NullPointerException e) { }
+//        return false;
+//    }
 
 }

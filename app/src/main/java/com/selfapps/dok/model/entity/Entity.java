@@ -14,4 +14,5 @@ public interface Entity {
     List<Person> getPersonList();
     List<String> getImageList();
     boolean equals(Object o);
+    boolean contains(String string);
 }

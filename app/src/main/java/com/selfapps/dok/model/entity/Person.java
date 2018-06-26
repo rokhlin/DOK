@@ -66,6 +66,8 @@ public class Person implements Entity {
         return App.getContext().getString(R.string.name_undefined);
     }
 
+
+
     @Override
     public String getContent() {
         try {
@@ -175,6 +177,11 @@ public class Person implements Entity {
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
         return Objects.equals(id, person.id);
+    }
+
+    @Override
+    public boolean contains(String string) {
+        return getName().toLowerCase().contains(string);
     }
 
     @Override
