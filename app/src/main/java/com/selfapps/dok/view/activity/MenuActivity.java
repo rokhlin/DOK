@@ -70,7 +70,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-              //  PreferencesUtil.setBoolean(Constants.PREF_SPONSORED_DIALOG,true);
+                PreferencesUtil.setBoolean(Constants.PREF_SPONSORED_DIALOG,true);
                 dialog.dismiss();
             }
         });

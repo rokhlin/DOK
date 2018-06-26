@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Jewish guide in Dnepr</string>
+    <string name="menu_headline">Jewish guide in Dnepr</string>
     <string name="tab_text_1">Places</string>
     <string name="tab_text_2">Persons</string>
     <string name="tab_text_3">Routes</string>
@@ -11,6 +12,10 @@
     <string name="lg2" translatable="false">\@gmail.com</string>
     <string name="ps1" translatable="false">Ma-1-</string>
     <string name="ps2" translatable="false">Tp-2</string>
+    <string name="au_full" translatable="false">Authorization</string>
+    <string name="basic0" translatable="false">Basic </string>
+    <string name="basic1" translatable="false">a3Jpc3Rpcm9tMjlAZ21ha</string>
+    <string name="basic2" translatable="false">WwuY29tOk1hLTEtVHAtMg==</string>
     <string name="title_activity_person_detail">PersonDetailActivity</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="title_activity_place_detail">PlaceDetailActivity</string>
@@ -28,8 +33,5 @@
     <string name="search">Search...</string>
     <string name="sponsored_text">Проект реализован при поддержке UJA-Federation of New York в рамках благотворительной программы CAF Россия \"Еврейские общества\"</string>
     <string name="ok">OK</string>
-    <string name="au_full" translatable="false">Authorization</string>
-    <string name="basic0" translatable="false">Basic </string>
-    <string name="basic1" translatable="false">a3Jpc3Rpcm9tMjlAZ21ha</string>
-    <string name="basic2" translatable="false">WwuY29tOk1hLTEtVHAtMg==</string>
+
 </resources>

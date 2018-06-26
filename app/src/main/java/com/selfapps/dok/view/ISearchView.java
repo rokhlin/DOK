@@ -10,5 +10,5 @@ public interface ISearchView extends MvpView {
     void showPerson(String id);
     void showPlace(String id);
     void showRoute(String id);
-    void setSearchViewActive();
+    void expandGroupItems();
 }

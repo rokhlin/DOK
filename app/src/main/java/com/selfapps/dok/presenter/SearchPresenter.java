@@ -16,7 +16,7 @@ public class SearchPresenter implements ISearchPresenter<ISearchView> {
     @Override
     public void onTextChanged(String query) {
         view.showResultList(model.getResultSet(query.toLowerCase()));
-        view.setSearchViewActive();
+        view.expandGroupItems();
     }
 
     @Override
@@ -52,6 +52,6 @@ public class SearchPresenter implements ISearchPresenter<ISearchView> {
 
     @Override
     public void viewIsReady() {
-        view.setSearchViewActive();
+        view.expandGroupItems();
     }
 }

@@ -20,5 +20,5 @@ public interface IDetailsModel<C> extends IModel{
         ArrayList<Place> getListPlaces();
         ArrayList<Person> getListPersons();
         ArrayList<Route> getListRoutes();
-        //TODO Add Gallery Grid
+
 }

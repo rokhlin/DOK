@@ -146,7 +146,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
     @Override
-    public void setSearchViewActive() {//todo rename method
+    public void expandGroupItems() {
         for (int i = 0; i <groups.size() ; i++) {
             listView.expandGroup(i);
         }

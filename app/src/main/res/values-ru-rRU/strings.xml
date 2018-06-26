@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jewish guide in Dnepr</string>
+    <string name="menu_headline">Гид по еврейским местам в Днепре</string>
+    <string name="tab_text_1">Места</string>
+    <string name="tab_text_2">Личности</string>
+    <string name="tab_text_3">Маршруты</string>
+    <string name="action_settings">Настройки</string>
+    <string name="adrress">Адрес</string>
+    <string name="places">Места</string>
+    <string name="btn_details">Подробности</string>
+    <string name="label_people">Личности</string>
+    <string name="text_button_details"><![CDATA[Подробнее >]]></string>
+    <string name="label_name">Имя</string>
+    <string name="btn_show_map">На карте</string>
+    <string name="name_undefined">Имя неопределено</string>
+    <string name="persons">Личности</string>
+    <string name="routes">Маршруты</string>
+    <string name="search">Поиск...</string>
+</resources>

@@ -41,7 +41,6 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void updateProgress(boolean isActive) {
-        //TODO replace test behavior with real progress
         if(isActive){
            progress.start();
         }else {
@@ -51,7 +50,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void postProgress(int progress) {
-        //TODO replace test behavior with real progress
+       //Unused
 
     }
 

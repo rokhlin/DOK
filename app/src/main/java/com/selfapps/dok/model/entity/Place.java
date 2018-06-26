@@ -59,7 +59,7 @@ public class Place implements Entity {
     }
 
     @Override
-    public String getName() {//TODO add NPE catching
+    public String getName() {
         try {
             switch (Utils.getCurrentLanguage()){
                 case En:
@@ -76,7 +76,7 @@ public class Place implements Entity {
     }
 
     @Override
-    public String getContent() {//TODO add NPE catching
+    public String getContent() {
         try {
             switch (Utils.getCurrentLanguage()){
                 case En:
