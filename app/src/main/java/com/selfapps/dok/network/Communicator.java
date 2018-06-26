@@ -38,7 +38,6 @@ import static com.selfapps.dok.network.NetworkConstants.BASE_URL;
 public class Communicator {
     private static Retrofit retrofit = null;
     private static  HttpLoggingInterceptor interceptor = null;
-    private static final String AUTHORIZATION = "Basic a3Jpc3Rpcm9tMjlAZ21haWwuY29tOk1hLTEtVHAtMg==";
 
     public static ApiInterface getRetrofitClient() {
 
@@ -72,7 +71,10 @@ public class Communicator {
 
     static GlideUrl getUrlWithHeaders(String url){
         return new GlideUrl(url, new LazyHeaders.Builder()
-                .addHeader("Authorization", AUTHORIZATION)
+                .addHeader(App.getContext().getString(R.string.au_full),
+                         App.getContext().getString(R.string.basic0)
+                        +App.getContext().getString(R.string.basic1)
+                        +App.getContext().getString(R.string.basic2))
                 .build());
     }
 
@@ -91,123 +93,16 @@ public class Communicator {
     public static String getAuthToken() {
         byte[] data = new byte[0];
         try {
-            data = ("kristirom29@gmail.com" + ":" + "Ma-1-Tp-2").getBytes("UTF-8");
+            data = (App.getContext().getResources().getString(R.string.lg1)
+                    + App.getContext().getResources().getString(R.string.lg2)
+                    + ":"
+                    + App.getContext().getResources().getString(R.string.ps1)
+                    + App.getContext().getResources().getString(R.string.ps2))
+                    .getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return "Basic " + Base64.encodeToString(data, Base64.NO_WRAP);
+        return  App.getContext().getString(R.string.basic0) + Base64.encodeToString(data, Base64.NO_WRAP);
     }
-
-
-
-
-
-//    public static void getPlaceString(final retrofit2.Callback<String> callback) {
-//        getRetrofitClient().getPoiString(getAuthToken()).enqueue(callback);
-//    }
-
-
-//    public static boolean checkImageOnCache(String imgName) {
-//        return false; //File will be loaded from server
-//    }
-
-
-//    public static void loadImageFromCache(final ImageView container, final String imgName) {
-//        Picasso.get()
-//                .load(NetworkConstants.IMAGE_URL + imgName)
-//                .networkPolicy(NetworkPolicy.OFFLINE)
-//                .into(container, new Callback() {
-//                    @Override
-//                    public void onSuccess() {}
-//
-//                    @Override
-//                    public void onError(Exception e) {
-//                        Log.d("Picasso","Could not fetch image "+e.getMessage());
-//                        //Try again online if cache failed
-//                        Picasso.get()
-//                                .load(NetworkConstants.IMAGE_URL + imgName)
-//                                .error(R.drawable.ic_launcher_background)
-//                                .into(container, new Callback() {
-//                                    @Override
-//                                    public void onSuccess() { }
-//
-//                                    @Override
-//                                    public void onError(Exception e) {
-//                                        Log.v("Picasso","Could not fetch image "+e.getMessage());
-//                                    }
-//                                });
-//                    }
-//                });
-//
-//    }
-//    public static void loadImageFromCacheTest(final ImageView container, final String imgName) {
-//        Picasso.get()
-//                .load(new File(Utils.getDiskCacheDir(App.getContext()).getPath()+"/"+imgName))
-//                .networkPolicy(NetworkPolicy.OFFLINE)
-//                .into(container, new Callback() {
-//                    @Override
-//                    public void onSuccess() {}
-//
-//                    @Override
-//                    public void onError(Exception e) {
-//                        Log.d("Picasso","Could not fetch image "+e.getMessage());
-//                        //Try again online if cache failed
-//                    }
-//                });
-//
-//    }
-
-//
-//    public static void loadImageFromUrl(ImageView logo, String imgName) {
-//        if(logo != null)
-//          Picasso.get().load(NetworkConstants.IMAGE_URL + imgName)
-//                //.resize(50, 50)
-//                .centerCrop(Gravity.CLIP_HORIZONTAL)
-//               // .centerCrop()
-//                .into(logo);
-//    }
-//    class MyAcyncTAsk extends AsyncTask<Void, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(Void... voids) {
-//            String res = "";
-//            String url = POI_URL;
-//            final String user = "kristirom29@gmail.com";
-//            final String password = "Ma-1-Tp-2";
-//            String userPass = user+":"+password;
-//            try {
-//                Authenticator.setDefault(new Authenticator(){
-//                    protected PasswordAuthentication getPasswordAuthentication() {
-//                        return new PasswordAuthentication(user,password.toCharArray());
-//                    }});
-//                HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
-//                c.setUseCaches(false);
-//                c.setRequestProperty("Authorization", "basic " +
-//                        Base64.encode(userPass.getBytes(), Base64.NO_WRAP));
-//                c.connect();
-//                String line;
-//                StringBuffer stringBuffer = new StringBuffer();
-//                BufferedReader in = new BufferedReader(new InputStreamReader(c.getInputStream()));
-//                while ((line = in.readLine()) != null) {
-//                    stringBuffer.append(line).append('\n');
-//                }
-//                res = stringBuffer.toString();
-//
-//
-//                in.close();
-//                c.disconnect();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                res = e.getMessage();
-//            }
-//            return res;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            container.setText(s);
-//
-//        }
-//    }
 
 }
