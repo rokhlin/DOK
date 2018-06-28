@@ -1,5 +1,6 @@
 package com.selfapps.dok.view.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -10,12 +11,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -47,19 +50,9 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        setSearchView();
 
         presenter = new SearchPresenter(this);
-
-        ActionBar actionBar = getSupportActionBar();
-        SearchView searchView = new SearchView(this);
-        actionBar.setCustomView(searchView);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        searchView.setQuery("",true);
-        searchView.setFocusable(true);
-        searchView.setIconified(false);
-        searchView.requestFocusFromTouch();
-        searchView.setSubmitButtonEnabled(true);
-        searchView.setOnQueryTextListener(this);
 
         listView = (ExpandableListView)findViewById(R.id.exListView);
 
@@ -85,24 +78,34 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         listView.setAdapter(adapter);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-////        MenuInflater inflater = getMenuInflater();
-////        inflater.inflate(R.menu.menu_search, menu);
-//
-////        SearchManager searchManager = (SearchManager)
-////                getSystemService(Context.SEARCH_SERVICE);
-////        MenuItem searchMenuItem = menu.findItem(R.id.search);
-////
-////        searchView = (SearchView) searchMenuItem.getActionView();
-////
-////        searchView.setSearchableInfo(searchManager.
-////                getSearchableInfo(getComponentName()));
-////        searchView.setSubmitButtonEnabled(true);
-////        searchView.setOnQueryTextListener(this);
-//
-//        return true;
-//    }
+    private void setSearchView() {
+        ActionBar actionBar = getSupportActionBar();
+        SearchView searchView = new SearchView(this);
+        actionBar.setCustomView(searchView);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        searchView.setQuery("",true);
+        searchView.setFocusable(true);
+        searchView.setIconified(true);
+        searchView.requestFocusFromTouch();
+        searchView.setSubmitButtonEnabled(false);
+        searchView.setOnQueryTextListener(this);
+
+        configureSearchView(searchView);
+    }
+
+    private void configureSearchView(SearchView searchView) {
+        android.view.ViewGroup.LayoutParams params = searchView.getLayoutParams();
+        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+
+        AppCompatImageView closeBtn = searchView.findViewById(R.id.search_close_btn);
+        closeBtn.setImageResource(R.drawable.ic_close_accent_24dp);
+
+        AppCompatImageView searchBtn = searchView.findViewById(R.id.search_mag_icon);
+        searchBtn.setImageResource(R.drawable.ic_search_accent_24dp);
+
+        AppCompatImageView searchBtn2 = searchView.findViewById(R.id.search_button);
+        searchBtn2.setImageResource(R.drawable.ic_search_accent_24dp);
+    }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
