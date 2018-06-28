@@ -11,10 +11,8 @@ import android.view.ViewGroup;
 
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.RVPersonsAdapter;
-import com.selfapps.dok.model.RVPlacesAdapter;
 import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Person;
-import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
 
