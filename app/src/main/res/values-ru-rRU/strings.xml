@@ -18,4 +18,5 @@
     <string name="routes">Маршруты</string>
     <string name="search">Поиск...</string>
     <string name="images">Фотографии</string>
+    <string name="info">О нас</string>
 </resources>

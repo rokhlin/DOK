@@ -31,11 +31,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         containerRoutes.setOnClickListener(this);
         search.setOnClickListener(this);
 
-        if(!PreferencesUtil.getBoolean(Constants.PREF_SPONSORED_DIALOG,false)){
-            createDialog().show();
-        }
-
-
+//        //Show sponsor dialog
+//        if(!PreferencesUtil.getBoolean(Constants.PREF_SPONSORED_DIALOG,false)){
+//            createDialog().show();
+//        }
     }
 
     @Override
@@ -57,6 +56,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_search:
                 intent = new Intent(MenuActivity.this, SearchActivity.class);
                 break;
+            case R.id.container_info:
+                intent = new Intent(MenuActivity.this, AboutUsActivity.class);
+                break;
             default:
                 intent = new Intent(MenuActivity.this,MainActivity.class);
         }
@@ -75,6 +77,5 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         return adb.create();
-
     }
 }
