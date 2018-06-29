@@ -2,7 +2,6 @@ package com.selfapps.dok.model;
 
 import android.content.Context;
 
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,6 +140,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
                     listener.onClick(tag);
                 }
             });
+            Communicator.loadImage(imageView,imgPath,R.drawable.place_holder);
 
         }else {//Loading Entity strategy
             assert inflater != null;
@@ -158,9 +158,9 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             final Tag tag = new Tag(itemType.name(),entity.getId());
             button.setOnClickListener(this);
             button.setTag(tag);
-
+            Communicator.loadImageFilterSepia(imageView,imgPath,R.drawable.place_holder);
         }
-        Communicator.loadUsingGlide(imageView,imgPath,R.drawable.place_holder);
+
 
         return convertView;
     }

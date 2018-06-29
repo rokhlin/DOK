@@ -24,7 +24,7 @@ public class FullscreenActivity extends AppCompatActivity {
         String imgPath = getIntent().getStringExtra(Constants.CONTENT_IMAGE_PATH_TAG);
         PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);
         //photoView.setImageResource(R.drawable.image);
-        Communicator.loadUsingGlide(photoView,imgPath,R.drawable.place_holder);
+        Communicator.loadImage(photoView,imgPath,R.drawable.place_holder);
 
     }
 
