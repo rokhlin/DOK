@@ -25,10 +25,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout containerPlaces = findViewById(R.id.container_places);
         LinearLayout containerPersons = findViewById(R.id.container_persons);
         LinearLayout containerRoutes= findViewById(R.id.container_routes);
+        LinearLayout containerInfo= findViewById(R.id.container_info);
         ImageView search = findViewById(R.id.btn_search);
         containerPersons.setOnClickListener(this);
         containerPlaces.setOnClickListener(this);
         containerRoutes.setOnClickListener(this);
+        containerInfo.setOnClickListener(this);
         search.setOnClickListener(this);
 
 //        //Show sponsor dialog
