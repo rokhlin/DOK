@@ -33,7 +33,7 @@ public class PersonsDetailModelI implements IDetailsModel<Person> {
 
     @Override
     public void loadImage(View container) {
-        Communicator.loadUsingGlide((ImageView) container,content.getImagePath(), R.drawable.place_holder_vertical);
+        Communicator.loadImageFilterSepia((ImageView) container,content.getImagePath(), R.drawable.place_holder_vertical);
     }
 
 

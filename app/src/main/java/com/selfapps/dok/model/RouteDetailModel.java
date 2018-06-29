@@ -10,7 +10,6 @@ import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.model.entity.Place;
-import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.network.Communicator;
 import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
@@ -33,7 +32,7 @@ public class RouteDetailModel implements IDetailsModel<Route> {
 
     @Override
     public void loadImage(View container) {
-        Communicator.loadUsingGlide((ImageView) container, content.getImagePath(), R.drawable.place_holder);
+        Communicator.loadImageFilterSepia((ImageView) container, content.getImagePath(), R.drawable.place_holder);
     }
 
 

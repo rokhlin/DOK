@@ -32,7 +32,7 @@ public class PlacesDetailModel implements IDetailsModel<Place> {
 
     @Override
     public void loadImage(View container) {
-        Communicator.loadUsingGlide((ImageView) container,content.getImagePath(), R.drawable.place_holder);
+        Communicator.loadImageFilterSepia((ImageView) container,content.getImagePath(), R.drawable.place_holder);
     }
 
 

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
-import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.PersonContent;
 import com.selfapps.dok.model.entity.Person;
 import com.selfapps.dok.network.Communicator;
@@ -78,7 +77,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-        Communicator.loadUsingGlide(logo,imgName,R.drawable.siluet);
+        Communicator.loadImageFilterSepia(logo,imgName,R.drawable.siluet);
     }
 
     private PersonContent getContentByLanguage(Person item) {

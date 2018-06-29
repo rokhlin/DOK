@@ -20,6 +20,7 @@
         <activity
             android:name=".view.activity.SplashActivity"
             android:label="@string/title_app"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,23 +30,25 @@
         </activity>
         <activity
             android:name=".view.activity.PersonDetailActivity"
-            android:label="@string/title_activity_person_detail"
+            android:label="@string/menu_headline"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.activity.AdditionalActivity" />
+        <activity android:name=".view.activity.AdditionalActivity"
+            android:label="@string/menu_headline"/>
         <activity
             android:name=".view.activity.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
+            android:label="@string/menu_headline"
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".view.activity.PlaceDetailActivity"
-            android:label="@string/title_activity_place_detail"
+            android:label="@string/menu_headline"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.RoutesDetailActivity"
-            android:label="@string/title_activity_routes_detail"
+            android:label="@string/menu_headline"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.activity.MenuActivity" />
+        <activity android:name=".view.activity.MenuActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.SearchActivity">
             <meta-data
                 android:name="android.app.searchable"

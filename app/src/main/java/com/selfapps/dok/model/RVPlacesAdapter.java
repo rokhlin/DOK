@@ -14,12 +14,10 @@ import android.widget.TextView;
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.network.Communicator;
-import com.selfapps.dok.model.entity.Language;
 import com.selfapps.dok.model.entity.POIContent;
 import com.selfapps.dok.model.entity.Place;
 import com.selfapps.dok.utils.Constants;
 import com.selfapps.dok.utils.Utils;
-import com.selfapps.dok.view.activity.PersonDetailActivity;
 import com.selfapps.dok.view.activity.PlaceDetailActivity;
 
 
@@ -73,7 +71,7 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
 
     private void loadImage(ImageView logo, String imgName) {
         if (imgName == null) return;
-        Communicator.loadUsingGlide(logo,imgName,R.drawable.place_holder);
+        Communicator.loadImageFilterSepia(logo,imgName,R.drawable.place_holder);
        // Communicator.loadImageFromCache(logo, imgName);
     }
 
