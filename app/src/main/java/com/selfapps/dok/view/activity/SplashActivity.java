@@ -17,7 +17,7 @@ import com.tubitv.ui.TubiLoadingView;
 public class SplashActivity extends AppCompatActivity implements SplashView {
     private static final String TAG = SplashActivity.class.getSimpleName();
     private TubiLoadingView progress;
-
+    private  TextView finish;
     SplashPresenter presenter;
 
     @Override
@@ -28,6 +28,18 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         setSupportActionBar(toolbar);
         getSupportActionBar().hide();
 
+        finish = findViewById(R.id.tv_finish);
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                    finishAndRemoveTask();
+                } else{
+                    finishAffinity();
+                }
+                System.exit(0);
+            }
+        });
 
         progress = findViewById(R.id.progress);
         presenter = new SplashPresenter();
@@ -64,6 +76,11 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
             Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
+    }
+
+    @Override
+    public void showFinishButton() {
+        finish.setVisibility(View.VISIBLE);
     }
 
 

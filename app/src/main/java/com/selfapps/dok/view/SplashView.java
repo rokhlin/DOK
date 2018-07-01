@@ -6,4 +6,5 @@ public interface SplashView extends MvpView {
     void postProgress(int progress);
     void setText(String text);
     void startMainActivity();
+    void showFinishButton();
 }

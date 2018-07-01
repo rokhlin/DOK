@@ -20,4 +20,6 @@
     <string name="images">Фотографии</string>
     <string name="info">О нас</string>
     <string name="our_sponsors">Наши Спонсоры</string>
+    <string name="exit">Выход</string>
+    <string name="internet_not_available">Интернет недоступен!</string>
 </resources>

@@ -12,7 +12,14 @@
         android:id="@+id/tv_content_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingBottom="28dp"
+        android:baselineAligned="false"
+        android:layout_gravity="fill"
         android:layout_margin="@dimen/text_margin"
          />
-
+    <!--android:ellipsize="none"-->
+    <!--android:inputType="textLongMessage"-->
+    <!--android:baselineAligned="false"-->
+    <!--android:ellipsize="marquee"-->
 </android.support.v4.widget.NestedScrollView>

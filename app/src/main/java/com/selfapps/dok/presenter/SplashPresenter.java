@@ -1,10 +1,16 @@
 package com.selfapps.dok.presenter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.selfapps.dok.App;
+import com.selfapps.dok.R;
 import com.selfapps.dok.model.EntityProvider;
 import com.selfapps.dok.model.ResultListener;
 import com.selfapps.dok.model.SplashModel;
@@ -15,6 +21,7 @@ import com.selfapps.dok.model.entity.Route;
 import com.selfapps.dok.utils.Converter;
 import com.selfapps.dok.utils.PreferencesUtil;
 import com.selfapps.dok.view.SplashView;
+import com.selfapps.dok.view.activity.MainActivity;
 
 import java.util.ArrayList;
 
@@ -43,6 +50,7 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
     }
 
     private void debugRun() {
+        view.showFinishButton();
         Log.d(TAG, "Loading is finished DataType.PERSON = \n" + PreferencesUtil.getData(DataType.PERSON));
         Log.d(TAG, "Loading is finished DataType.ROUTE = \n" + PreferencesUtil.getData(DataType.ROUTE));
 
@@ -73,6 +81,8 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
     @Override
     public void viewIsReady() {
         finalFlag = 0;
+        checkConnection();
+
         view.updateProgress(true);
         view.setText( PreferencesUtil.getData(DataType.PERSON));
         model.requestPersons(new EntityProvider<Person>(DataType.PERSON, new ResultListener<ArrayList<Person>>() {
@@ -117,6 +127,20 @@ public class SplashPresenter implements ISplashPresenter<SplashView> {
 
 
 
-
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) App.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void checkConnection(){
+        if(!isOnline()){
+            Toast.makeText(App.getContext(), R.string.internet_not_available, Toast.LENGTH_SHORT).show();
+            view.showFinishButton();
+        }
+    }
 
 }
