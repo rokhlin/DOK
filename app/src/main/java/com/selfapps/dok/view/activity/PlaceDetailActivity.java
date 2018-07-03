@@ -105,6 +105,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements DetailsVie
     @Override
     public void showAdditionalScreen(String id, DataType type) {
         Intent intent = new Intent(this,AdditionalActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         intent.putExtra(Constants.CONTENT_TYPE_TAG, type.name());
         startActivity(intent);

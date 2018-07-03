@@ -22,7 +22,11 @@ public class Converter {
     }
 
     private static Converter getInstance(){
-        if(converter == null) converter = new Converter();
+        if(converter == null) {
+            GsonBuilder builder = new GsonBuilder();
+            gson = builder.create();
+            converter = new Converter();
+        }
         return converter;
     }
 
@@ -50,16 +54,19 @@ public class Converter {
 
 
     public static ArrayList<Person> getPersonsFromString(String data) throws UnsupportedOperationException {
+        getInstance();
         Type collectionType = new TypeToken<ArrayList<Person>>(){}.getType();
         return gson.fromJson(data, collectionType);
     }
 
     public static ArrayList<Place> getPlacesFromString(String data) throws UnsupportedOperationException {
+        getInstance();
         Type collectionType = new TypeToken<ArrayList<Place>>(){}.getType();
         return gson.fromJson(data, collectionType);
     }
 
     public static ArrayList<Route> getRoutesFromString(String data) throws UnsupportedOperationException {
+        getInstance();
         Type collectionType = new TypeToken<ArrayList<Route>>(){}.getType();
         return gson.fromJson(data, collectionType);
     }

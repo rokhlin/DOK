@@ -64,6 +64,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 intent = new Intent(MenuActivity.this,MainActivity.class);
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

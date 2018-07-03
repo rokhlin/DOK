@@ -24,6 +24,8 @@ import com.selfapps.dok.view.activity.PlaceDetailActivity;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 
 public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.PlacesViewHolder> {
     private static final String TAG = RVPlacesAdapter.class.getSimpleName();
@@ -65,6 +67,7 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(App.getContext(), PlaceDetailActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
                 App.getContext().startActivity(intent);
             }

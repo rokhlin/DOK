@@ -23,6 +23,8 @@ import com.selfapps.dok.view.activity.RoutesDetailActivity;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.RoutesViewHolder> {
     private static final String TAG ="RVRoutesAdapter" ;
     private ArrayList<Route> routes;
@@ -54,6 +56,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(App.getContext(), RoutesDetailActivity.class);
+                    intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
                     App.getContext().startActivity(intent);
                 }

@@ -24,6 +24,7 @@ public class RouteDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Rou
     @Override
     public void onMapSelected(Location location) {
         Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mapIntent.setData(location.getGeoUri(model.getContent().getName()));
         App.getContext().startActivity(mapIntent);
     }

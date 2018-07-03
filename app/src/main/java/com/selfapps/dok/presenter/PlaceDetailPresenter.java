@@ -9,6 +9,8 @@ import com.selfapps.dok.model.entity.DataType;
 import com.selfapps.dok.model.entity.Location;
 import com.selfapps.dok.model.entity.Place;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Place>> {
     private static final String TAG =" PlaceDetailPresenter" ;
 
@@ -25,6 +27,7 @@ public class PlaceDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Pla
     @Override
     public void onMapSelected(Location location) {
         Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         mapIntent.setData(location.getGeoUri(model.getContent().getName()));
         App.getContext().startActivity(mapIntent);
     }

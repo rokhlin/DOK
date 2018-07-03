@@ -105,6 +105,7 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
     @Override
     public void showImage(String path) {
         Intent intent = new Intent(this,FullscreenActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_IMAGE_PATH_TAG,path);
         startActivity(intent);
     }
@@ -112,6 +113,7 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
     @Override
     public void showPerson(String id) {
         Intent intent = new Intent(this, PersonDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         startActivity(intent);
 
@@ -120,6 +122,7 @@ public class AdditionalActivity extends AppCompatActivity implements IAdditional
     @Override
     public void showPlace(String id) {
         Intent intent = new Intent(this, PlaceDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         startActivity(intent);
     }

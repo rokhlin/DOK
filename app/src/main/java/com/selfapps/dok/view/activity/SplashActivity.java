@@ -76,6 +76,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     @Override
     public void startMainActivity() {
             Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
     }

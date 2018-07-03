@@ -130,6 +130,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     public void showPerson(String id) {
         Intent intent = new Intent(this, PersonDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         startActivity(intent);
     }
@@ -137,6 +138,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     public void showPlace(String id) {
         Intent intent = new Intent(this, PlaceDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         startActivity(intent);
     }
@@ -144,6 +146,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     public void showRoute(String id) {
         Intent intent = new Intent(this, RoutesDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.CONTENT_ID_TAG, id);
         startActivity(intent);
     }

@@ -22,6 +22,8 @@ import com.selfapps.dok.view.activity.PersonDetailActivity;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.PersonsViewHolder> {
     private static final String TAG = RVPersonsAdapter.class.getSimpleName();
     private ArrayList<Person> persons;
@@ -70,6 +72,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(App.getContext(), PersonDetailActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
                 App.getContext().startActivity(intent);
             }

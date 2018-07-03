@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.search) {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             return true;
         }
