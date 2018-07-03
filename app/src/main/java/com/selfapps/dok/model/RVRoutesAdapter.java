@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.Route;
@@ -42,6 +43,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
         Route route = null;
         try {
             route = routes.get(position);
+            if(route==null) return;
             RouteContent content = getContentByLanguage(route);
 
             holder.name.setText(content.getName());

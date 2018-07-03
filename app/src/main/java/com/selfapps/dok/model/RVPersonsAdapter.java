@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.model.entity.PersonContent;
@@ -42,6 +43,7 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
         Person person = null;
         try {
             person = persons.get(position);
+            if(person==null) return;
             PersonContent content = getContentByLanguage(person);
             id =person.getId();
             //Name set up

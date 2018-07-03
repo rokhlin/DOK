@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.selfapps.dok.App;
 import com.selfapps.dok.R;
 import com.selfapps.dok.network.Communicator;
@@ -41,6 +42,8 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
 
     @Override
     public void onBindViewHolder(@NonNull PlacesViewHolder holder, int position) {
+        if(places.get(position)==null) return;
+
         POIContent content = getPoiContentByLanguage(places.get(position));
         holder.name.setText(content.getName());
         holder.address.setText(content.getAddress());

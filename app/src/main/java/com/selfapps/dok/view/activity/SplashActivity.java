@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.selfapps.dok.R;
 import com.selfapps.dok.presenter.SplashPresenter;
 import com.selfapps.dok.view.SplashView;
@@ -38,6 +39,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
                     finishAffinity();
                 }
                 System.exit(0);
+ //               Crashlytics.getInstance().crash();
             }
         });
 
