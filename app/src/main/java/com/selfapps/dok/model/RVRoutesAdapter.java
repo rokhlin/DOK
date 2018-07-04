@@ -2,6 +2,7 @@ package com.selfapps.dok.model;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,8 +52,8 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
             holder.name.setText(content.getName());
             holder.placesCount.setText(getPlacesCount(route));
 
-            holder.details.setTag(route.getId());
-            holder.details.setOnClickListener(new View.OnClickListener() {
+            holder.cv.setTag(route.getId());
+            holder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(App.getContext(), RoutesDetailActivity.class);
@@ -130,6 +131,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
         TextView name, placesCount;
         Button details;
         ImageView logo;
+        CardView cv;
 
         public RoutesViewHolder(View itemView) {
             super(itemView);
@@ -137,6 +139,7 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
             placesCount = (TextView) itemView.findViewById(R.id.tv_paces_count);
             details =(Button) itemView.findViewById(R.id.btn_details);
             logo = (ImageView) itemView.findViewById(R.id.img_photo);
+            cv = (CardView) itemView.findViewById(R.id.cv);
         }
     }
 }

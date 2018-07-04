@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -22,30 +23,103 @@
             android:textStyle="bold" />
 
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/gpg_logo_final" />
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sponsored_text"
+            android:textAlignment="textStart"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:autoLink="email"
+            android:clickable="true"
+            android:focusable="true"
+            android:linksClickable="true"
+            android:text="@string/sponsored_text_email"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sponsored_text_source_of_info_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sponsored_text_source_of_info"
+            android:textAlignment="textStart"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sponsored_text_photo_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sponsored_text_photo"
+            android:textAlignment="textStart"
+            android:textSize="16sp" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_margin="16dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/uja_logo" />
-        <ImageView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="96dp"
-            android:layout_margin="16dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/jafi_logo" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="128dp"
-            android:layout_margin="16dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/jdc_logo" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/jafi_logo" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/jdc_logo" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

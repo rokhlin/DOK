@@ -4,13 +4,11 @@
     <color name="colorPrimaryDark">#333333</color>
     <color name="colorAccent">#b89981</color>
     <color name="textColorBright">#AAA399</color>
-    <color name="textColor">#5c6773</color>
     <color name="textColor_overlay">#665c6773</color>
     <color name="textColor_white">#ffffff</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="brown_overlay">#261300</color>
-    <color name="orange_overlay">#af5800</color>
     <color name="brown_overlay_strong">#96261300</color>
     <color name="list_background">#f5f5f5</color>
 </resources>

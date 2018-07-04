@@ -2,6 +2,7 @@ package com.selfapps.dok.model;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -67,8 +68,8 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
         }
 
         //Button set up
-        holder.details.setTag(id);
-        holder.details.setOnClickListener(new View.OnClickListener() {
+        holder.cv.setTag(id);
+        holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(App.getContext(), PersonDetailActivity.class);
@@ -106,12 +107,14 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
     public class PersonsViewHolder extends RecyclerView.ViewHolder{
         TextView name, details;
         ImageView logo;
+        CardView cv;
 
         public PersonsViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tw_name1);
             details =(TextView) itemView.findViewById(R.id.btn_details);
             logo = (ImageView) itemView.findViewById(R.id.img_photo1);
+            cv = (CardView) itemView.findViewById(R.id.cv);
         }
     }
 }

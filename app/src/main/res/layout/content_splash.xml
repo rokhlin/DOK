@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/splash" />
+        app:srcCompat="@drawable/splash_logo" />
 
     <com.tubitv.ui.TubiLoadingView
         android:id="@+id/progress"

@@ -2,6 +2,7 @@ package com.selfapps.dok.model;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -62,8 +63,8 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
     } catch (IndexOutOfBoundsException e) {
         Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
     }
-        holder.details.setTag(id);
-        holder.details.setOnClickListener(new View.OnClickListener() {
+        holder.cv.setTag(id);
+        holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(App.getContext(), PlaceDetailActivity.class);
@@ -101,6 +102,7 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
         TextView name, address;
         Button details;
         ImageView logo;
+        CardView cv;
 
         public PlacesViewHolder(View itemView) {
             super(itemView);
@@ -108,6 +110,7 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
             address = (TextView) itemView.findViewById(R.id.tw_address);
             details =(Button) itemView.findViewById(R.id.btn_details);
             logo = (ImageView) itemView.findViewById(R.id.img_photo);
+            cv = (CardView) itemView.findViewById(R.id.cv);
         }
     }
 }

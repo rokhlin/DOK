@@ -4,9 +4,7 @@
     <string name="tab_text_1">Places</string>
     <string name="tab_text_2">Persons</string>
     <string name="tab_text_3">Routes</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_app">JDnipro</string>
     <string name="lg1" translatable="false">kristirom29</string>
     <string name="lg2" translatable="false">\@gmail.com</string>
@@ -16,10 +14,6 @@
     <string name="basic0" translatable="false">Basic</string>
     <string name="basic1" translatable="false">a3Jpc3Rpcm9tMjlAZ21ha</string>
     <string name="basic2" translatable="false">WwuY29tOk1hLTEtVHAtMg==</string>
-    <string name="title_activity_person_detail">PersonDetailActivity</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="title_activity_place_detail">PlaceDetailActivity</string>
-    <string name="title_activity_routes_detail">RoutesDetailActivity</string>
     <string name="adrress">Address</string>
     <string name="places">Places</string>
     <string name="btn_details">Details</string>
@@ -31,7 +25,12 @@
     <string name="persons">Persons</string>
     <string name="routes">Routes</string>
     <string name="search">Search...</string>
-    <string name="sponsored_text">Проект реализован при поддержке UJA-Federation of New York в рамках благотворительной программы CAF Россия \"Еврейские общества\"</string>
+    <string name="sponsored_text">Приложение представлено общественной организацией МЕОД (Молодежное еврейское образование Днепра)</string>
+    <string name="sponsored_text_email">meod@i.ua</string>
+    <string name="sponsored_text_source_of_info_title">Источники информации:</string>
+    <string name="sponsored_text_source_of_info">Цви Гаркави. Книга памяти Екатеринослава – Днепропетровска. Иерусалим, 1973.\nАлександр Быстряков. Хроника жизни евреев Екатеринослава – Днепропетровска.\nГО «Потік часу. Дніпро». Днепровская городская энциклопедия</string>
+    <string name="sponsored_text_photo_title">Фотографии:</string>
+    <string name="sponsored_text_photo">Евгений Шнайдер\nАлександр Волок\nАрхив института «Укржилремпроект»</string>
     <string name="ok">OK</string>
     <string name="images">Images</string>
     <string name="info">About us</string>

@@ -156,8 +156,8 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             name.setText(entity.getName());
 
             final Tag tag = new Tag(itemType.name(),entity.getId());
-            button.setOnClickListener(this);
-            button.setTag(tag);
+            convertView.setOnClickListener(this);
+            convertView.setTag(tag);
             Communicator.loadImageFilterSepia(imageView,imgPath,R.drawable.place_holder);
         }
 
