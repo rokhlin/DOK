@@ -29,7 +29,15 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.RoutesViewHolder> {
     private static final String TAG ="RVRoutesAdapter" ;
     private ArrayList<Route> routes;
-
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(App.getContext(), RoutesDetailActivity.class);
+            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+            App.getContext().startActivity(intent);
+        }
+    };
     public RVRoutesAdapter(ArrayList<Route> routes) {
         this.routes = routes;
     }
@@ -53,15 +61,9 @@ public class RVRoutesAdapter extends RecyclerView.Adapter<RVRoutesAdapter.Routes
             holder.placesCount.setText(getPlacesCount(route));
 
             holder.cv.setTag(route.getId());
-            holder.cv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(App.getContext(), RoutesDetailActivity.class);
-                    intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
-                    App.getContext().startActivity(intent);
-                }
-            });
+            holder.cv.setOnClickListener(listener);
+            holder.details.setTag(route.getId());
+            holder.details.setOnClickListener(listener);
 
             String imgName = null;
             if (route.getImageList()!= null ||

@@ -28,6 +28,15 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.PersonsViewHolder> {
     private static final String TAG = RVPersonsAdapter.class.getSimpleName();
     private ArrayList<Person> persons;
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(App.getContext(), PersonDetailActivity.class);
+            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+            App.getContext().startActivity(intent);
+        }
+    };
 
     public RVPersonsAdapter(ArrayList<Person> persons) {
         this.persons = persons;
@@ -69,15 +78,9 @@ public class RVPersonsAdapter extends RecyclerView.Adapter<RVPersonsAdapter.Pers
 
         //Button set up
         holder.cv.setTag(id);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(App.getContext(), PersonDetailActivity.class);
-                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
-                App.getContext().startActivity(intent);
-            }
-        });
+        holder.cv.setOnClickListener(listener);
+        holder.details.setTag(id);
+        holder.details.setOnClickListener(listener);
 
     }
 

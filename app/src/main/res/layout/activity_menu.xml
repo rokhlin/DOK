@@ -35,7 +35,7 @@
                 android:text="@string/menu_headline"
                 android:textAlignment="gravity"
                 android:textColor="@color/textColorBright"
-                android:textSize="24sp"
+                android:textSize="@dimen/header_menu_size"
                 android:textStyle="bold" />
         </LinearLayout>
 

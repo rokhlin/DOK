@@ -102,6 +102,8 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
 
             details.setVisibility(View.GONE);
             divider.setVisibility(View.GONE);
+
+            //logo.setImageResource(R.drawable.metro);
             logo.setVisibility(View.GONE);
 
             name.setText(place.getName());

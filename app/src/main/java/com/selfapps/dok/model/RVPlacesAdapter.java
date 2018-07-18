@@ -35,6 +35,15 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
     public RVPlacesAdapter(ArrayList<Place> places) {
         this.places = places;
     }
+    private View.OnClickListener listener = new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Intent intent = new Intent(App.getContext(), PlaceDetailActivity.class);
+                                                    intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                                                    intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
+                                                    App.getContext().startActivity(intent);
+                                                }
+                                            };
 
     @NonNull
     @Override
@@ -64,15 +73,9 @@ public class RVPlacesAdapter extends RecyclerView.Adapter<RVPlacesAdapter.Places
         Log.d(TAG,"Logo is empty. Image loading error "+e.getMessage());
     }
         holder.cv.setTag(id);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(App.getContext(), PlaceDetailActivity.class);
-                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constants.CONTENT_ID_TAG, v.getTag().toString());
-                App.getContext().startActivity(intent);
-            }
-        });
+        holder.cv.setOnClickListener(listener);
+        holder.details.setTag(id);
+        holder.details.setOnClickListener(listener);
 
     }
 

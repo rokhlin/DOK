@@ -12,12 +12,29 @@
         app:cardCornerRadius="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/img_photo"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
             android:layout_height="196dp"
             app:srcCompat="@drawable/place_holder_vertical" />
+
+        <com.selfapps.dok.utils.OutlineTextView
+            android:id="@+id/tv_zoom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:foregroundGravity="bottom|right"
+            android:gravity="bottom|right|end"
+            android:text="@string/tap_to_open"
+            android:textAlignment="textEnd"
+            android:textColor="@color/textColorBright"
+            android:typeface="normal"
+            android:background="@null"
+            android:textSize="14sp"
+            app:textStrokeWidth="1sp"
+            app:textStrokeColor="#FFFFFF"/>
 
 
     </android.support.v7.widget.CardView>

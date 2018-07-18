@@ -8,5 +8,6 @@
     <dimen name="content_place_btn_padding">8dp</dimen>
     <dimen name="typical_margin">8dp</dimen>
     <dimen name="typical_padding">8dp</dimen>
+    <dimen name="header_menu_size">24sp</dimen>
 
 </resources>

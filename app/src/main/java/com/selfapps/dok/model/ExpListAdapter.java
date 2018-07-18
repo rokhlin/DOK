@@ -123,6 +123,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         DataType itemType =  groups.get(groupPosition).getType();
         ImageView imageView;
+        TextView zoom;
         String imgPath = "";
         LayoutInflater inflater = (LayoutInflater)  App.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -134,12 +135,15 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
             assert inflater != null;
             convertView = inflater.inflate(R.layout.list_item_image, null);
             imageView = convertView.findViewById(R.id.img_photo);
-            imageView.setOnClickListener(new View.OnClickListener() {
+            zoom = convertView.findViewById(R.id.tv_zoom);
+            View.OnClickListener clickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onClick(tag);
                 }
-            });
+            };
+            zoom.setOnClickListener(clickListener);
+            imageView.setOnClickListener(clickListener);
             Communicator.loadImage(imageView,imgPath,R.drawable.place_holder);
 
         }else {//Loading Entity strategy
