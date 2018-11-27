@@ -156,7 +156,8 @@ public class ExpListAdapter extends BaseExpandableListAdapter implements View.On
 
             Entity entity = (Entity) getChild(groupPosition,childPosition);
             imgPath = entity.getImageList().get(0);
-            strType.setText(itemType.name().toLowerCase());
+            //strType.setText(itemType.name().toLowerCase());
+            strType.setText(App.getContext().getString(R.string.places));
             name.setText(entity.getName());
 
             final Tag tag = new Tag(itemType.name(),entity.getId());

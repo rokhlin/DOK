@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jewish guide in Dnepr</string>
-    <string name="menu_headline">Гид по еврейским местам в Днепре</string>
+    <string name="menu_headline">Гид по еврейским местам</string>
     <string name="tab_text_1">Места</string>
     <string name="tab_text_2">Личности</string>
     <string name="tab_text_3">Маршруты</string>
@@ -17,7 +17,7 @@
     <string name="routes">Маршруты</string>
     <string name="search">Поиск...</string>
     <string name="images">Фотографии</string>
-    <string name="info">О нас</string>
+    <string name="info">О проекте</string>
     <string name="our_sponsors">Наши Спонсоры</string>
     <string name="exit">Выход</string>
     <string name="internet_not_available">Интернет недоступен!</string>

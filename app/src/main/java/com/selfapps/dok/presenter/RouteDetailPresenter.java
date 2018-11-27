@@ -43,7 +43,7 @@ public class RouteDetailPresenter extends BaseDetailsPresenter<IDetailsModel<Rou
     public void viewIsReady() {
         model.loadImage(view.getImageContainer());
         view.showName(model.getContent().getName());
-        view.updateFab(R.drawable.additional_content_img);
+        view.updateFab(R.drawable.icons_about2);
         //view.showTextContent(model.getContent().getContent());//Removed because it was duplicated value
         view.showPlacesContent(model.getListPlaces());
     }

@@ -23,8 +23,8 @@
                 android:id="@+id/img_photo1"
                 android:layout_width="96dp"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:layout_marginEnd="@dimen/typical_margin"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/siluet" />
 
             <LinearLayout

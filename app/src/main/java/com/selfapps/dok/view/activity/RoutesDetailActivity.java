@@ -12,6 +12,7 @@ import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.selfapps.dok.App;
@@ -103,8 +104,16 @@ public class RoutesDetailActivity extends AppCompatActivity implements DetailsVi
             details.setVisibility(View.GONE);
             divider.setVisibility(View.GONE);
 
-            //logo.setImageResource(R.drawable.metro);
-            logo.setVisibility(View.GONE);
+            logo.setImageResource(R.drawable.ic_action_map);
+            //logo.getLayoutParams().height = 72;
+            logo.getLayoutParams().width  = 124;
+            logo.setPadding(24,8,0,8);
+//            LinearLayout.LayoutParams parameter =  (LinearLayout.LayoutParams) logo.getLayoutParams();
+//            parameter.setMargins(0, 0, 0, 0); // left, top, right, bottom
+//            logo.setLayoutParams(parameter);
+            logo.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            logo.requestLayout();
+            //logo.setVisibility(View.GONE);
 
             name.setText(place.getName());
             name.setTextSize(14);
