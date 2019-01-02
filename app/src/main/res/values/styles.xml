@@ -66,8 +66,8 @@
     </style>
 
     <declare-styleable name="OutlineTextView">
-        <attr name="textStrokeColor" format="color"/>
-        <attr name="textStrokeWidth" format="dimension"/>
+        <attr name="textStrokeColor" format="color" />
+        <attr name="textStrokeWidth" format="dimension" />
     </declare-styleable>
 
 </resources>
